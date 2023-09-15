@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import '../styles.css'
 import { FaGitAlt } from "react-icons/fa";
 import { SiFirebase } from "react-icons/si";
@@ -10,32 +10,131 @@ import { TbBrandJavascript } from "react-icons/tb";
 import { FaReact } from "react-icons/fa";
 import { FaCss3Alt } from "react-icons/fa";
 import { FaHtml5 } from "react-icons/fa";
-
+import React, { useState, useEffect } from 'react';
 
 
 
 const experience = () => {
+
+ 
+  const [internetFacts, setInternetFacts] = useState([
+    { year: "2019 - 2020", fact: "Air Traffic and Navigation Services" },
+    { year: "2020 - 2021", fact: "Astrofica Technologies" },
+    { year: "2023/02 - 2023/07", fact: "UVU Africa (CapaCiTi)" },
+    { year: "2023/07 - current", fact: "Younglings VA" },
+  ]);
+  
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const pagesToShow = 4; // Number of pages to show at once
+  const lastPagesToShow = 1; // Number of last pages to show
+
+  useEffect(() => {
+    renderFact();
+    updatePaginationDots();
+  }, [currentPage]);
+
+  function renderFact() {
+    const fact = internetFacts[currentPage];
+    const factDisplay = document.getElementById("fact-display");
+    if (factDisplay) {
+      factDisplay.innerHTML = `<h3>${fact.year}</h3><p>${fact.fact}</p>`;
+    }
+  }
+
+  function updatePaginationDots() {
+    const paginationDiv = document.getElementById("pagination-dots");
+    if (paginationDiv) {
+      paginationDiv.innerHTML = "";
+
+      // Add previous arrow
+      const prevArrow = document.createElement("span");
+      prevArrow.id = "prev-arrow";
+      prevArrow.innerText = "←";
+      prevArrow.addEventListener("click", () => goToPage(currentPage - 1));
+      paginationDiv.appendChild(prevArrow);
+
+      // Calculate start and end indices for pagination
+      const totalFacts = internetFacts.length;
+      let startPage = Math.floor(currentPage / pagesToShow) * pagesToShow;
+      let endPage = Math.min(startPage + pagesToShow, totalFacts - lastPagesToShow);
+
+      // Add first pages and ellipsis if needed
+      if (startPage > 0) {
+        paginationDiv.appendChild(createDot(0));
+        paginationDiv.appendChild(createDot(1));
+        paginationDiv.appendChild(createDot(2));
+        paginationDiv.appendChild(createEllipsis());
+      }
+
+      // Add middle pages
+      for (let index = startPage; index < endPage; index++) {
+        paginationDiv.appendChild(createDot(index));
+      }
+
+      // Add last pages and ellipsis if needed
+      if (endPage < totalFacts) {
+        paginationDiv.appendChild(createEllipsis());
+        for (let index = totalFacts - lastPagesToShow; index < totalFacts; index++) {
+          paginationDiv.appendChild(createDot(index));
+        }
+      }
+
+      // Add next arrow
+      const nextArrow = document.createElement("span");
+      nextArrow.id = "next-arrow";
+      nextArrow.innerText = "→";
+      nextArrow.addEventListener("click", () => goToPage(currentPage + 1));
+      paginationDiv.appendChild(nextArrow);
+    }
+  }
+
+  function createDot(index) {
+    const dot = document.createElement("span");
+    dot.className = "pagination-dot";
+    dot.innerText = index + 1; // Display page number
+    dot.addEventListener("click", () => goToPage(index));
+    if (index === currentPage) dot.classList.add("active");
+    return dot;
+  }
+
+  function createEllipsis() {
+    const ellipsis = document.createElement("span");
+    return ellipsis;
+  }
+
+  function goToPage(pageNumber) {
+    if (pageNumber >= 0 && pageNumber < internetFacts.length) {
+      setCurrentPage(pageNumber);
+    }
+  }
+ 
+   // Initial rendering
+   renderFact();
+   updatePaginationDots();
+  
+
   return (
+
+    
     <div className="my-experience">
 
-      {/* <video autoPlay muted loop>
-        <source src="../assets/INK-WATER.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video> */}
         <div className='exp-title'> 
             <h2>EXPERIENCE</h2>
         </div>
         {/* -------------------------------------------- */}
                 <div className='exp-colums'>
 
-              <div className=" exp-container">
-                 <ul id='exp-ul'>
-                 <li id='exp-ul'>2019 - 2020: Air Traffic and navigation Services</li>
-                 <li id='exp-ul'>2020 - 2021: Astrofica technologies</li>
-                 <li id='exp-ul'>2023/02 - 2023/07: UVU Africa (CapaCiTi) </li>
-                 <li id='exp-ul'>2023/07 - current: Younglings VA</li>
-                </ul>
-            </div>
+
+
+    <div id="facts-container">
+      <div id="fact-display"></div>
+      <div id="pagination-dots">
+      	  <span id="prev-arrow">←</span>
+  				<span id="next-arrow">→</span>
+      </div>
+    </div>
+ 
 
 
         {/* -------------------------------------------- */}
@@ -148,7 +247,10 @@ const experience = () => {
         </div>
 
     </div>
+
+    
   );
+  
 };
 
 export default experience;

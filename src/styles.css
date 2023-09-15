@@ -13,6 +13,7 @@
   position: fixed;
   padding: 0.5rem 0rem;
   background-color: hsl(181deg 50% 20% / 70%);
+  /* background-color: hsla(0, 0%, 4%, 0.7); */
   color: #fff;
   box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
 }
@@ -135,9 +136,6 @@
   align-items: center;
   color: #111;
   text-align: center;
-
-  /* background-repeat: none;
-  animation: blur 7s; */
   
 }
 
@@ -206,9 +204,8 @@
 
 /* About page */
 .about-page {
-  /* background-image: url('assets/rm378-09h.jpg'); 
-  background-size: cover; */
-  background-color: #eee;
+  background-image: url('assets/pexels-life-of-pix-8892.jpg'); 
+  background-size: cover;
   background-position: center;
   height: 100vh;
   display: flex;
@@ -217,12 +214,13 @@
 }
 
 .title h2{
-  text-align:  center;
-  
+ text-align:  center;
+ background-color: hsl(181deg 50% 20% /70%);
+ color: #eee;
 }
 
 .image-container {
-filter: drop-shadow(0rem 0rem 1.5rem #013751);
+ filter: drop-shadow(0rem 0rem 1.5rem rgb(153,153,0));
       
 }
       
@@ -286,34 +284,81 @@ filter: drop-shadow(0rem 0rem 1.5rem #013751);
 
 /* experience */
 
-/* .my-experience{
-  background-image: url('assets/INK-WATER.mp4'); 
+.my-experience {
+  background-image: url('assets/pexels-life-of-pix-8892.jpg'); 
   background-size: cover;
   background-position: center;
   height: 100vh;
   display: flex;
   flex-direction: column;
-} */
-
-.my-experience {
-  /* background-image: url('assets/rm378-09h.jpg'); 
-  background-size: cover; */
-  background-color: #eee;
-  background-position: center;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+  font-family: monaco, courier;
 }
+
+/* ---------------------------------------------------------------------------- */
+
+#facts-container {
+  background-color: hsla(180, 39%, 95%, 0.60);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  text-align: center;
+  margin-top: -25%;
+}
+
+#fact-display h3 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#fact-display p {
+  font-size: 18px;
+  color: #555;
+}
+
+.pagination-dot {
+  display: inline-block;
+  margin: 5px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.pagination-dot:hover {
+  background-color: #eee;
+}
+
+.pagination-dot.active {
+  background-color: #FF385C;
+  color: #fff;
+  border: 1px solid #FF385C;
+}
+
+#prev-arrow, #next-arrow {
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+
+/* ---------------------------------------------------------------------------- */
 
 
 .exp-title h2{
   text-align:  center;
-  
+  background-color: hsl(181deg 50% 20% /70%);
+  color: #eee;
 }
 
 .left-block{
   left: 0;
-  margin: 300px 0;
+  margin: 125px 0;
   margin-bottom:50%;
   color: white;
   background-color: hsl(181deg 50% 20% / 70%);
@@ -323,7 +368,7 @@ filter: drop-shadow(0rem 0rem 1.5rem #013751);
 .right-block{
   height: auto;
   right: 0;
-  margin: 300px 0;
+  margin: 125px 0;
   margin-bottom:50%;
   color: white;
   background-color: hsl(181deg 50% 20% / 70%);
@@ -353,30 +398,32 @@ article .icon {
 .article-items{
   display: flex;
   justify-content: space-around;
-
+/* margin-top: -80%; */
 }
 
 .exp-colums{
 display: flex;
 flex-direction: column;
+margin: 20%;
 }
 
 /* projects */
 
 .projects-page{
-  /* background-image: url('assets/rm378-09h.jpg'); 
-  background-size: cover; */
-  background-color: #eee;
+  background-image: url('assets/pexels-life-of-pix-8892.jpg'); 
+  background-size: cover;
+  /* background-color: #eee; */
   background-position: center;
   height: 100vh;
   display: flex;
   flex-direction: column;
-
+  font-family: monaco, courier;
 }
 
 .project-title h2{
   text-align:  center;
-
+  background-color: hsl(181deg 50% 20% /70%);
+  color: #eee;
 }
 
 .container {
@@ -480,14 +527,13 @@ flex-direction: column;
 
 /* Contact page */
 .contact-me{
-  /* background-image: url('assets/rm378-09h.jpg'); 
-  background-size: cover; */
-  background-color: #E5E5E5;
+  background-image: url('assets/pexels-life-of-pix-8892.jpg');  
+  background-size: cover;
   background-position: center;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  
+  font-family: monaco, courier;
   
 }
 .contact-colums{
@@ -507,22 +553,32 @@ flex-direction: column;
   padding: 20px;
   text-align: center;
   margin-left: auto;
-  filter: drop-shadow(0rem 0rem 1.5rem #013751);
+  filter: drop-shadow(0rem 0rem 1.5rem rgb(153,153,0));
 }
+
+.contact-left p{
+color: #fff;
+font-size: larger;
+
+}
+
 .contact-title h2{
   text-align:  center;
-  
+  background-color: hsl(181deg 50% 20% /70%);
+  color: #eee;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* background-color: #42616e; */
 }
 
 .contact-form label {
   font-weight: bold;
   margin-top: 10px;
+
 }
 
 .contact-form input,
@@ -537,7 +593,7 @@ flex-direction: column;
 .contact-form button {
   margin-top: 40px;
   padding: 10px 20px;
-  background-color: #42616e;
+  background-color: hsl(181deg 50% 20% );
   color: white;
   border: none;
   border-radius: 5px;
@@ -560,6 +616,23 @@ flex-direction: column;
   width: max-content;
   
   }
+  .envelope-icon {
+    margin-bottom: 20%;
+    cursor: pointer;
+    font-size: 100px;
+    color: hsl(181deg 50% 20%); /* Change the color as needed */
+  }
+
+  .close-button{
+    padding: 10px 20px;
+    background-color: hsl(181deg 50% 20% );
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+  }
 
   /* ----------------------flip card in contact---------------------------- */
 
@@ -568,6 +641,7 @@ flex-direction: column;
   perspective: 1000px;
   width: 200px; 
   height: 300px; 
+  margin-right: 10%;
 }
 
 .flip-card-inner {

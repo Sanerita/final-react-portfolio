@@ -6,6 +6,9 @@ import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
+import { FaEnvelope } from "react-icons/fa";
+
+
 
 const ContactPage = () => {
   const [name, setName] = useState();
@@ -66,6 +69,24 @@ const ContactPage = () => {
     setIsFlipped(!isFlipped);
   };
 
+  // --------------------------------------------------------
+
+  
+    const [isOpen, setIsOpen] = useState(false);
+  
+    const togglePopup = () => {
+      setIsOpen(!isOpen);
+    };
+  
+    const closePopup = () => {
+      setIsOpen(false);
+    };
+  
+  
+
+
+  //--------------------------------------------------------- 
+
   return (
     <div className="contact-me">
       <div className="contact-title">
@@ -78,7 +99,76 @@ const ContactPage = () => {
             If you have any questions or inquiries, feel free to get in touch!
           </p>
           <br />
-          <form className="contact-form" onSubmit={sendEmail}>
+          {/*------------------------------------------------------------------------------ */}
+          <div className={`contact-popup ${isOpen ? "open" : ""}`}>
+            {!isOpen && (
+              <FaEnvelope className="envelope-icon" onClick={togglePopup} />
+            )}
+            {isOpen && (
+              <div className="popup-content">
+                <div className="popup-header">
+                  <button className="close-button" onClick={closePopup}>
+                    {" "}
+                    Close Form &times;
+                  </button>
+                </div>
+                <form className="contact-form" onSubmit={sendEmail}>
+                  <label htmlFor="name">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                    value={name}
+                    onChange={(event) => {
+                      setName(event.target.value);
+                    }}
+                  />
+
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Your Email"
+                    required
+                    value={email}
+                    onChange={(event) => {
+                      setEmail(event.target.value);
+                    }}
+                  />
+
+                  <label htmlFor="message">Message</label>
+                  <textarea
+                    name="message"
+                    placeholder="write your message"
+                    id="message"
+                    required
+                    value={message}
+                    onChange={(event) => {
+                      setMessage(event.target.value);
+                    }}
+                  />
+
+                  <div className="recapture">
+                    <ReCAPTCHA
+                      sitekey="6Lco3xcoAAAAAMHei-nZgzZPS7ZT4fHd2l0P6mjU"
+                      onChange={onChange}
+                    />
+                  </div>
+
+                  <button type="submit" onClick={handleSubmit}>
+                    Send
+                  </button>
+                </form>
+              </div>
+            )}
+          </div>
+
+          {/* ------------------------------------------------------------------------------- */}
+
+          {/* <form className="contact-form" onSubmit={sendEmail}>
             <label htmlFor="name">Name</label>
             <input
               type="text"
@@ -128,7 +218,7 @@ const ContactPage = () => {
             <button type="submit" onClick={handleSubmit}>
               Send
             </button>
-          </form>
+          </form> */}
         </div>
 
         <div className="flip-card" onClick={flipCard}>
