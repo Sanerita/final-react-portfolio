@@ -6,7 +6,7 @@ import AboutPage from './components/aboutPage';
 import Experience from './components/experience';
 import Projects from './components/projects';
 import ContactPage from './components/contactPage';
-import Footer from './components/footer';
+import Footer from './components/Footer';
 // import Route from 'react-router-dom';
 
 

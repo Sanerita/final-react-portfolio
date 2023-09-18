@@ -204,7 +204,7 @@
 
 /* About page */
 .about-page {
-  background-image: url('assets/white paint.jpeg'); 
+  background-image: url('assets/pexels-life-of-pix-8892.jpg'); 
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -285,7 +285,7 @@
 /* experience */
 
 .my-experience {
-  background-image: url('assets/white paint.jpeg'); 
+  background-image: url('assets/pexels-life-of-pix-8892.jpg'); 
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -523,6 +523,23 @@ margin: 20%;
 }
 .container .box:hover .content p {
   transform: translateY(0px);
+}
+
+
+.github-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.github-button:hover {
+  background-color: #555;
 }
 
 /* Contact page */

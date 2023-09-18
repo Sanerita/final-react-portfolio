@@ -96,7 +96,7 @@ const ContactPage = () => {
       <div className="contact-colums">
         <div className="contact-left">
           <p>
-            If you have any questions or inquiries, feel free to get in touch!
+            If you have any questions or inquiries, feel free to CLICK on the envelope to get in touch!
           </p>
           <br />
           {/*------------------------------------------------------------------------------ */}
