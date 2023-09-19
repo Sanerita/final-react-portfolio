@@ -137,8 +137,10 @@ const experience = () => {
     </div>
  
 
-    
-         <h3>EXPERIENCE</h3>
+    <div className='skills-title'>
+    <h3>TECH-SKILLS</h3>
+    </div>
+        
    
 
         {/* -------------------------------------------- */}

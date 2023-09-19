@@ -215,7 +215,7 @@
 
 .title h2{
  text-align:  center;
- background-color: hsl(181deg 50% 20% /70%);
+ /* background-color: hsl(181deg 50% 20% /70%); */
  color: #eee;
 }
 
@@ -295,6 +295,13 @@
   font-family: monaco, courier;
 }
 
+.skills-title{
+  text-align:  center;
+  margin-top: 10%;
+  color: #eee;
+
+}
+
 /* ---------------------------------------------------------------------------- */
 
 #facts-container {
@@ -353,7 +360,7 @@
 
 .exp-title h2{
   text-align:  center;
-  background-color: hsl(181deg 50% 20% /70%);
+  /* background-color: hsl(181deg 50% 20% /70%); */
   color: #eee;
 }
 
@@ -399,7 +406,7 @@ article .icon {
 .article-items{
   display: flex;
   justify-content: space-around;
-/* margin-top: -80%; */
+margin-top: -10%;
 }
 
 .exp-colums{
@@ -423,7 +430,7 @@ margin: 20%;
 
 .project-title h2{
   text-align:  center;
-  background-color: hsl(181deg 50% 20% /70%);
+  /* background-color: hsl(181deg 50% 20% /70%); */
   color: #eee;
 }
 
@@ -582,7 +589,7 @@ font-size: larger;
 
 .contact-title h2{
   text-align:  center;
-  background-color: hsl(181deg 50% 20% /70%);
+  /* background-color: hsl(181deg 50% 20% /70%); */
   color: #eee;
 }
 
@@ -651,6 +658,37 @@ font-size: larger;
     transition: background-color 0.3s ease;
 
   }
+
+
+  /* --------------------------whatsapp button------------------------- */
+
+  .whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .whatsapp-button button {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .whatsapp-button button svg {
+    margin-right: 8px;
+  }
+  
 
   /* ----------------------flip card in contact---------------------------- */
 
