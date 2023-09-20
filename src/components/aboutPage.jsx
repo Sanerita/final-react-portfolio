@@ -33,7 +33,7 @@ const downloadCv = () =>{
           </p>
 
           <a
-            onClick={() => window.open("./SILEKU-CV cpt.pdf")}
+            onClick={() => window.open("assets/SILEKU-CV cpt.pdf")}
             className="btn"
           >
             <button id="CV-button">DownloadCV</button>

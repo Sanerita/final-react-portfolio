@@ -204,8 +204,9 @@
 
 /* About page */
 .about-page {
-  background-image: url('assets/pexels-life-of-pix-8892.jpg'); 
-  background-size: cover;
+  /* background-image: url('assets/wp4779340-dark-purple-aesthetic-1920x1080-wallpapers.jpg'); 
+  background-size: cover; */
+  background-color: #f5deb3;
   background-position: center;
   height: 100vh;
   display: flex;
@@ -216,7 +217,22 @@
 .title h2{
  text-align:  center;
  /* background-color: hsl(181deg 50% 20% /70%); */
- color: #eee;
+ color: #111;
+ animation: fadeInUp 4s ease-in-out; /* Apply the animation */
+ /* font-size: 36px;
+  font-weight: bold; */
+}
+
+/* Keyframes for animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .image-container {
@@ -286,8 +302,9 @@
 /* experience */
 
 .my-experience {
-  background-image: url('assets/pexels-life-of-pix-8892.jpg'); 
-  background-size: cover;
+  /* background-image: url('assets/pexels-life-of-pix-8892.jpg'); 
+  background-size: cover; */
+  background-color: #f5deb3;
   background-position: center;
   height: 100vh;
   display: flex;
@@ -298,7 +315,7 @@
 .skills-title{
   text-align:  center;
   margin-top: 10%;
-  color: #eee;
+  color: #111;
 
 }
 
@@ -361,8 +378,36 @@
 .exp-title h2{
   text-align:  center;
   /* background-color: hsl(181deg 50% 20% /70%); */
-  color: #eee;
+  color: #111;
+  /* font-size: 36px; */
+  /* font-weight: bold; */
+  animation: fadeInUp 1s ease-in-out; /* Apply the animation */
+  padding: 2% 0; /* Add some padding to create space for the line */
+  position: relative; /* Create a relative positioning context */
+  
 }
+
+.exp-title h2::before,
+.exp-title h2::after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 500px; /* Width of the separator lines */
+  height: 1px; /* Height of the separator lines */
+  background-color: #f3eded; /* Color of the separator lines */
+  transform: translateY(-50%);
+}
+
+/* Left separator line */
+.exp-title h2::before {
+  left: 0;
+}
+
+/* Right separator line */
+.exp-title h2::after {
+  right: 0;
+}
+
 
 .left-block{
   left: 0;
@@ -418,9 +463,9 @@ margin: 20%;
 /* projects */
 
 .projects-page{
-  background-image: url('assets/pexels-life-of-pix-8892.jpg'); 
-  background-size: cover;
-  /* background-color: #eee; */
+  /* background-image: url('assets/pexels-life-of-pix-8892.jpg'); 
+  background-size: cover; */
+  background-color: #f5deb3;
   background-position: center;
   height: 100vh;
   display: flex;
@@ -431,7 +476,7 @@ margin: 20%;
 .project-title h2{
   text-align:  center;
   /* background-color: hsl(181deg 50% 20% /70%); */
-  color: #eee;
+  color: #111;
 }
 
 .container {
@@ -552,8 +597,9 @@ margin: 20%;
 
 /* Contact page */
 .contact-me{
-  background-image: url('assets/pexels-life-of-pix-8892.jpg');  
-  background-size: cover;
+  /* background-image: url('assets/pexels-life-of-pix-8892.jpg');  
+  background-size: cover; */
+  background-color: #f5deb3;
   background-position: center;
   height: 100vh;
   display: flex;
@@ -582,7 +628,7 @@ margin: 20%;
 }
 
 .contact-left p{
-color: #fff;
+color: #111;
 font-size: larger;
 
 }
@@ -590,7 +636,7 @@ font-size: larger;
 .contact-title h2{
   text-align:  center;
   /* background-color: hsl(181deg 50% 20% /70%); */
-  color: #eee;
+  color: #111;
 }
 
 .contact-form {
