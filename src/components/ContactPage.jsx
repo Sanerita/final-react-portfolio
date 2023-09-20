@@ -7,6 +7,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { FaEnvelope } from "react-icons/fa";
+import undrawPersonal from '../assets/undraw_personal.svg';
 
 
 
@@ -188,6 +189,9 @@ const ContactPage = () => {
         Chat on WhatsApp
       </button>
     </div>
+
+    <img className ="undrawPersonal" src={undrawPersonal} alt="Personal SVG" />
+
 
         {/* <div className="flip-card" onClick={flipCard}>
           <div className={`flip-card-inner ${isFlipped ? "flipped" : ""}`}>

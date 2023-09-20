@@ -206,7 +206,7 @@
 .about-page {
   /* background-image: url('assets/wp4779340-dark-purple-aesthetic-1920x1080-wallpapers.jpg'); 
   background-size: cover; */
-  background-color: #f5deb3;
+  background-color: #d2d2d2;
   background-position: center;
   height: 100vh;
   display: flex;
@@ -260,7 +260,7 @@
   margin: 440px 0;
   margin-bottom:50%;
   color: white;
-  background-color: hsl(181deg 50% 20% / 70%);
+  background-color: hsl(181deg 50% 20% );
   padding: 2rem; 
 
 
@@ -304,7 +304,7 @@
 .my-experience {
   /* background-image: url('assets/pexels-life-of-pix-8892.jpg'); 
   background-size: cover; */
-  background-color: #f5deb3;
+  background-color: #d2d2d2;
   background-position: center;
   height: 100vh;
   display: flex;
@@ -414,7 +414,7 @@
   margin: 125px 0;
   margin-bottom:50%;
   color: white;
-  background-color: hsl(181deg 50% 20% / 70%);
+  background-color: hsl(181deg 50% 20% );
   padding: 2rem; 
 }
 
@@ -424,7 +424,7 @@
   margin: 125px 0;
   margin-bottom:50%;
   color: white;
-  background-color: hsl(181deg 50% 20% / 70%);
+  background-color: hsl(181deg 50% 20% );
   padding: 2rem; 
 }
 
@@ -465,7 +465,7 @@ margin: 20%;
 .projects-page{
   /* background-image: url('assets/pexels-life-of-pix-8892.jpg'); 
   background-size: cover; */
-  background-color: #f5deb3;
+  background-color: #d2d2d2;
   background-position: center;
   height: 100vh;
   display: flex;
@@ -475,7 +475,7 @@ margin: 20%;
 
 .project-title h2{
   text-align:  center;
-  /* background-color: hsl(181deg 50% 20% /70%); */
+
   color: #111;
 }
 
@@ -486,7 +486,7 @@ margin: 20%;
   justify-content: center;
   flex-wrap: wrap;
   transform-style: preserve-3d;
-  /* perspective: 500px; */
+
   margin: auto;
 }
 .container .box {
@@ -597,9 +597,7 @@ margin: 20%;
 
 /* Contact page */
 .contact-me{
-  /* background-image: url('assets/pexels-life-of-pix-8892.jpg');  
-  background-size: cover; */
-  background-color: #f5deb3;
+  background-color: #d2d2d2;
   background-position: center;
   height: 100vh;
   display: flex;
@@ -635,7 +633,7 @@ font-size: larger;
 
 .contact-title h2{
   text-align:  center;
-  /* background-color: hsl(181deg 50% 20% /70%); */
+
   color: #111;
 }
 
@@ -643,7 +641,7 @@ font-size: larger;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: #42616e; */
+
 }
 
 .contact-form label {
@@ -691,7 +689,7 @@ font-size: larger;
     margin-bottom: 20%;
     cursor: pointer;
     font-size: 100px;
-    color: hsl(181deg 50% 20%); /* Change the color as needed */
+    color: hsl(181deg 50% 20%); 
   }
 
   .close-button{
@@ -704,6 +702,12 @@ font-size: larger;
     transition: background-color 0.3s ease;
 
   }
+
+  .undrawPersonal {
+    width: 500px; 
+    height: 400px; 
+  }
+  
 
 
   /* --------------------------whatsapp button------------------------- */
@@ -735,63 +739,8 @@ font-size: larger;
     margin-right: 8px;
   }
   
-
-  /* ----------------------flip card in contact---------------------------- */
-
-
-.flip-card {
-  perspective: 1000px;
-  width: 200px; 
-  height: 300px; 
-  margin-right: 10%;
-}
-
-.flip-card-inner {
-  width: 150%;
-  height: 80%;
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
-}
-
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Front and back of the card */
-.flip-card-front,
-.flip-card-back {
-  width: 130%;
-  height: 80%;
-  position: absolute;
-  backface-visibility: hidden;
-  border-radius: 5%;
-  color: #fff;
-}
-
-/* Front of the card styles */
-.flip-card-front {
-  background-color: hsl(181deg 50% 20%); /* Set the front background color */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+/* ------------------------------------------------------------------------ */
   
-}
-
-/* Back of the card styles */
-.flip-card-back {
-  background-color: hsl(181deg 50% 20%); /* Set the back background color */
-  transform: rotateY(180deg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-
-  /* --------------------------------------------------- */
-
   #art-icons h3{
     margin: 10%;
     width: max-content;
@@ -827,8 +776,8 @@ margin-top: 20px;
   justify-content: center;
   color: #fff;
   text-align: center;
-  /* background-color: hsl(181deg 50% 20% ); */
 
+  
 }
 
 
@@ -854,7 +803,7 @@ margin-top: 20px;
   transition: color 0.3s ease; /*this adds a smooth color transition on hover */
 
   &:hover {
-    color: #00bcd4; /* Change the hover color as needed */
+    color: #00bcd4; /*  hover color  */
   }
 }
 
