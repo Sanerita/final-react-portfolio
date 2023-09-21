@@ -68,13 +68,13 @@
   background-color: #fff;
 }
 /* media quiries */
-/* display the hamburger icon */
+/* this displays the hamburger icon */
 @media screen and (max-width: 768px) {
   .hamburger {
     display: block;
   }
 }
-/*  hide the ul element in navigation-menu */
+/* this hides the ul element in navigation-menu */
 @media screen and (max-width: 768px) {
   .navigation-menu ul {
     display: none;

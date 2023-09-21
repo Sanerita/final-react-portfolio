@@ -155,7 +155,7 @@ const isValidEmail = (email) => {
   
   return (
 
-    <div id="ContactPage">
+    <section id="ContactPage">
     <div className="contact-me">
       <div className="contact-title">
         <h2>CONTACT ME</h2>
@@ -255,7 +255,7 @@ const isValidEmail = (email) => {
 
       </div>
     </div>
-    </div>
+    </section>
   );
 };
 

@@ -7,7 +7,7 @@ const AboutPage = () => {
 
 
     return (
-      <div id='about-page'>
+      <section id='about-page'>
       <div className="about-page">
         <div className="title">
           <h2>ABOUT ME</h2>
@@ -39,7 +39,7 @@ const AboutPage = () => {
           </a>
         </div>
         </div>
-      </div>
+      </section>
     );
 };
 
