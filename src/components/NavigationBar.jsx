@@ -5,18 +5,7 @@ import { useState } from "react";
 
 
  function NavigationBar() {
-  // state = { clicked: false };
-
-  // handleClick = () => {
-  //   this.setState({ clicked: !this.state.clicked });
-  // };
-
-  // closeNavbar = () => {
-  //   if (this.state.clicked) {
-  //     this.setState({ clicked: false });
-  //   }
-  // };
-
+  
 const [isNavExpanded, setIsNavExpanded] = useState(false)
 
 
