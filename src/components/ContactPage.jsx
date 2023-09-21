@@ -163,7 +163,7 @@ const ContactPage = () => {
 
                   <div className="recapture">
                     <ReCAPTCHA
-                      sitekey="6Lco3xcoAAAAAMHei-nZgzZPS7ZT4fHd2l0P6mjU"
+                      sitekey="6LfmxkMoAAAAAEkNuggcZBysyLDQd95HtpxXra5U"
                       onChange={onChange}
                     />
                   </div>

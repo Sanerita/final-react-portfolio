@@ -9,7 +9,7 @@ const downloadCv = () =>{
 }
 
     return (
-      <div id='aboutPage'>
+      <div id='about-page'>
       <div className="about-page">
         <div className="title">
           <h2>ABOUT ME</h2>
