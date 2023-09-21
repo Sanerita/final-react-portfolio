@@ -9,6 +9,7 @@ const downloadCv = () =>{
 }
 
     return (
+      <div id='aboutPage'>
       <div className="about-page">
         <div className="title">
           <h2>ABOUT ME</h2>
@@ -39,6 +40,7 @@ const downloadCv = () =>{
             <button id="CV-button">DownloadCV</button>
           </a>
         </div>
+      </div>
       </div>
     );
 };

@@ -234,14 +234,13 @@
 
 .title h2{
  text-align:  center;
- /* background-color: hsl(181deg 50% 20% /70%); */
+
  color: #111;
- animation: fadeInUp 4s ease-in-out; /* Apply the animation */
- padding: 2% 0; /* Add some padding to create space for the line */
- position: relative; /* Create a relative positioning context */
+ animation: fadeInUp 4s ease-in-out; 
+ padding: 2% 0; 
+ position: relative; 
  
- /* font-size: 36px;
-  font-weight: bold; */
+
 }
 
 /* Keyframes for animation */
@@ -302,7 +301,7 @@
   margin: 465px 0;
   margin-bottom:45%;
   color: white;
-  background-color: hsl(181deg 50% 20% );
+  background-color: hsl(181deg 50% 20%);
   padding: 2rem; 
 
 
@@ -344,8 +343,7 @@
 /* experience */
 
 .my-experience {
-  /* background-image: url('assets/pexels-life-of-pix-8892.jpg'); 
-  background-size: cover; */
+
   background-color: #d2d2d2;
   background-position: center;
   height: 100vh;
@@ -437,13 +435,12 @@
 
 .exp-title h2{
   text-align:  center;
-  /* background-color: hsl(181deg 50% 20% /70%); */
+
   color: #111;
-  /* font-size: 36px; */
-  /* font-weight: bold; */
-  animation: fadeInUp 1s ease-in-out; /* Apply the animation */
-  padding: 2% 0; /* Add some padding to create space for the line */
-  position: relative; /* Create a relative positioning context */
+
+  animation: fadeInUp 1s ease-in-out; 
+  padding: 2% 0; 
+  position: relative; 
   
 }
 
@@ -524,8 +521,7 @@ margin: 20%;
 /* projects */
 
 .projects-page{
-  /* background-image: url('assets/pexels-life-of-pix-8892.jpg'); 
-  background-size: cover; */
+
   background-color: #d2d2d2;
   background-position: center;
   height: 100vh;
@@ -554,9 +550,9 @@ margin: 20%;
   text-align:  center;
 
   color: #111;
-  animation: fadeInUp 4s ease-in-out; /* Apply the animation */
- padding: 2% 0; /* Add some padding to create space for the line */
- position: relative; /* Create a relative positioning context */
+  animation: fadeInUp 4s ease-in-out; 
+ padding: 2% 0; 
+ position: relative; 
  
 }
 
@@ -628,7 +624,7 @@ margin: 20%;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, hsl(181deg 50% 20%) ,#000);
+  background: linear-gradient(180deg, #862e50 ,#000);
   z-index: 1;
   opacity: 0;
   transition: 0.5s;
@@ -755,9 +751,9 @@ font-size: larger;
   text-align:  center;
 
   color: #111;
-  animation: fadeInUp 4s ease-in-out; /* Apply the animation */
- padding: 2% 0; /* Add some padding to create space for the line */
- position: relative; /* Create a relative positioning context */
+  animation: fadeInUp 4s ease-in-out; 
+ padding: 2% 0; 
+ position: relative
  
 }
 
@@ -944,11 +940,11 @@ margin-top: 20px;
   font-size: 24px; 
   color: #fff; 
   text-decoration: none;
-  margin: 0 10px; /* this Adds space between the icons */
-  transition: color 0.3s ease; /*this adds a smooth color transition on hover */
+  margin: 0 10px; 
+  transition: color 0.3s ease; 
 
   &:hover {
-    color: #00bcd4; /*  hover color  */
+    color: #00bcd4; 
   }
 }
 
@@ -959,4 +955,83 @@ margin-top: 20px;
 }
 
 
+/* ----------------------------------------------------------- */
 
+/* .project-box {
+  border: 1px solid hsl(181deg 50% 20%);
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  background-color: hsla(180, 39%, 95%, 0.60);
+ 
+  border-radius: 5px;
+  margin-left: 40px;
+}
+
+.project-box h3 {
+  font-size: 1rem;
+}
+
+.project-box p {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.buttons a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons a:hover {
+  color: #007bff;
+}
+.project-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+} */
+
+/* -------------------------------------------------------- */
+
+.projects-intro {
+  background-color: hsla(180, 39%, 95%, 0.60);/* Transparent white background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  margin-bottom: 10px;
+  max-width: 800px; /* Adjust the width as needed */
+  margin: 0 auto ; 
+  right: 0%;
+  margin-left: 230px;
+  margin-top: 30px;
+}
+
+.projects-intro h2 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.projects-intro p {
+  font-size: 1rem;
+  color: #111;
+  margin: 10px 0;
+}

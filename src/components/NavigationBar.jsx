@@ -5,7 +5,20 @@ import { useState } from "react";
 
 
  function NavigationBar() {
+  // state = { clicked: false };
+
+  // handleClick = () => {
+  //   this.setState({ clicked: !this.state.clicked });
+  // };
+
+  // closeNavbar = () => {
+  //   if (this.state.clicked) {
+  //     this.setState({ clicked: false });
+  //   }
+  // };
+
 const [isNavExpanded, setIsNavExpanded] = useState(false)
+
 
     return (
       <nav className="navigation">
@@ -38,25 +51,28 @@ const [isNavExpanded, setIsNavExpanded] = useState(false)
           isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
         }
       >
+
           <ul>
             <li>
-              <a href="/HomePage">Home</a>
+              <a href="#HomePage">Home</a>
             </li>
             <li>
-              <a href="/aboutPage">About me</a>
+              <a href="#aboutPage">About me</a>
             </li>
             <li>
-              <a href="/experience">Experience</a>
+              <a href="#experience">Experience</a>
             </li>
             <li>
-              <a href="/Projects">Projects</a>
+              <a href="#Projects">Projects</a>
             </li>
             <li>
-              <a href="/ContactPage">Contact me</a>
+              <a href="#ContactPage">Contact me</a>
             </li>
           </ul>
         </div>
          </nav>
     );
-  }
-  export default NavigationBar;
+        }
+      
+
+export default NavigationBar;

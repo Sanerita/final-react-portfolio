@@ -1,13 +1,12 @@
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import { FiPhoneCall } from "react-icons/fi";
 import emailjs from "emailjs-com";
 import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { FaEnvelope } from "react-icons/fa";
-import undrawPersonal from '../assets/undraw_personal.svg';
+import undrawPersonal from '../assets/undraw_personal_text_re_vqj3.svg';
 
 
 
@@ -75,11 +74,6 @@ const ContactPage = () => {
   document.cookie = "myCookie=myValue; SameSite=None; Secure";
 
 
-  // const [isFlipped, setIsFlipped] = useState(false);
-
-  // const flipCard = () => {
-  //   setIsFlipped(!isFlipped);
-  // };
 
   // --------------------------------------------------------
 
@@ -100,6 +94,8 @@ const ContactPage = () => {
   //--------------------------------------------------------- 
 
   return (
+
+    <div id="ContactPage">
     <div className="contact-me">
       <div className="contact-title">
         <h2>CONTACT ME</h2>
@@ -225,6 +221,7 @@ const ContactPage = () => {
           </div>
         </div> */}
       </div>
+    </div>
     </div>
   );
 };

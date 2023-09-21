@@ -117,7 +117,7 @@ const experience = () => {
 
   return (
 
-    
+    <div id='experience'>
     <div className="my-experience">
 
         <div className='exp-title'> 
@@ -253,7 +253,7 @@ const experience = () => {
         </div>
 
     </div>
-
+    </div>
     
   );
   
