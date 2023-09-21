@@ -4,9 +4,7 @@ import React from 'react';
 
 const AboutPage = () => {
 
-const downloadCv = () =>{
-    
-}
+
 
     return (
       <div id='about-page'>
@@ -34,7 +32,7 @@ const downloadCv = () =>{
           </p>
 
           <a
-            onClick={() => window.open("assets/SILEKU-CV cpt.pdf")}
+            onClick={() => window.open("https://drive.google.com/file/d/1MLs8OZYoTN9s5Ntb58a0wO32tHsUkJq9/view?usp=sharing")}
             className="btn"
           >
             <button id="CV-button">DownloadCV</button>
