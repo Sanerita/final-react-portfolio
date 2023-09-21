@@ -5,7 +5,8 @@ import { useState } from "react";
 
 
  function NavigationBar() {
-  
+ 
+
 const [isNavExpanded, setIsNavExpanded] = useState(false)
 
 
