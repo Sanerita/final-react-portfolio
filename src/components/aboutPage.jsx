@@ -1,5 +1,5 @@
 import React from 'react';
-
+// import downloadCv from './assets/SILEKU-CV cpt.pdf"'
 
 
 const AboutPage = () => {
@@ -40,7 +40,7 @@ const downloadCv = () =>{
             <button id="CV-button">DownloadCV</button>
           </a>
         </div>
-      </div>
+        </div>
       </div>
     );
 };

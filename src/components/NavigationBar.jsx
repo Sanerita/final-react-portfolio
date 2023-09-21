@@ -57,12 +57,13 @@ const [isNavExpanded, setIsNavExpanded] = useState(false)
             </li>
             <li>
               <a href="#ContactPage">Contact me</a>
+              
             </li>
           </ul>
         </div>
          </nav>
     );
         }
-      
+   
 
 export default NavigationBar;

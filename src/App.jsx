@@ -7,8 +7,8 @@ import Experience from './components/experience';
 import Projects from './components/projects';
 import ContactPage from './components/ContactPage';
 import Footer from './components/Footer';
-import Route from 'react-router-dom';
-import ReactRouterDOM from 'react-router-dom';
+// import Route from 'react-router-dom';
+// import ReactRouterDOM from 'react-router-dom';
 
 
 const App = () => {
