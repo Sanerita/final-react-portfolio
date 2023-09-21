@@ -12,10 +12,12 @@ import undrawPersonal from '../assets/undraw_personal_text_re_vqj3.svg';
 
 const ContactPage = () => {
 
-    const phoneNumber = '+2765 968 2801'; // my whatsapp number
   
     const openWhatsApp = () => {
-      window.open(`https://wa.me/${phoneNumber}`, '_blank');
+      const phoneNumber = '+2765 968 2801'; // my whatsapp number
+      const message = 'Hello, Lets get intouch!'; // Optional: You can pre-fill a message
+      const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
     };
   
   // ------------------------------email.js-------------------------
@@ -188,38 +190,6 @@ const ContactPage = () => {
 
     <img className ="undrawPersonal" src={undrawPersonal} alt="Personal SVG" />
 
-
-        {/* <div className="flip-card" onClick={flipCard}>
-          <div className={`flip-card-inner ${isFlipped ? "flipped" : ""}`}>
-            <div className="flip-card-front">
-             
-              <div className="contact-right">
-                <article className="art-icons">
-                  <div className="call-icon">
-                    <FiPhoneCall />
-                  </div>
-                  <h3>+2778 140 7749</h3>
-                </article>
-                <article className="art-icons">
-                  <div className="whatsapp-icon">
-                    <FaWhatsapp />
-                  </div>
-                  <div>
-                    <h3>+2765 968 2801</h3>
-                  </div>
-                </article>
-              </div>
-            </div>
-            <div className="flip-card-back">
-              
-              <p>
-                Please feel free to reach out to me at your convenience through
-                WhatsApp or by giving me a call. I am readily available and look
-                forward to connecting with you.{" "}
-              </p>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
     </div>
