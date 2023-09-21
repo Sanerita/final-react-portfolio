@@ -15,7 +15,7 @@ const ContactPage = () => {
   
     const openWhatsApp = () => {
       const phoneNumber = '+2765 968 2801'; // my whatsapp number
-      const message = 'Hello, Lets get intouch!'; // Optional: You can pre-fill a message
+      const message = 'Hello, Lets get intouch!'; 
       const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
     };
@@ -25,8 +25,48 @@ const ContactPage = () => {
   const [email, setEmail] = useState();
   const [message, setMessage] = useState();
 
+  // Add state variables for validation errors
+const [nameError, setNameError] = useState('');
+const [emailError, setEmailError] = useState('');
+const [messageError, setMessageError] = useState('');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate user input
+  let isValid = true;
+
+  if (name.trim() === '') {
+    setNameError('Name is required');
+    isValid = false;
+  } else if (!isValidName(name)) {
+    setNameError('Invalid name format');
+    isValid = false;
+  } else {
+    setNameError('');
+  }
+
+  if (email.trim() === '') {
+    setEmailError('Email is required');
+    isValid = false;
+  } else if (!isValidEmail(email)) {
+    setEmailError('Invalid email format');
+    isValid = false;
+  } else {
+    setEmailError('');
+  }
+
+  if (message.trim() === '') {
+    setMessageError('Message is required');
+    isValid = false;
+  } else {
+    setMessageError('');
+  }
+
+  if (!isValid) {
+    return;
+  }
+// end of validating user input
 
     await addDoc(collection(db, 'data'),{
       name: name,
@@ -40,16 +80,34 @@ const ContactPage = () => {
     alert('data sent!!');
   };
 
-  function onChange(value) {
-    console.log("Captcha value:", value);
-  }
-
   const [emailData, setEmailData] = useState({
     name: "",
     email: "",
     message: "",
   });
 
+   // Helper function to validate name format
+  const isValidName = (name) => {
+    const nameRegex = /^[A-Za-z\-\'\s]+$/;
+    return nameRegex.test(name);
+  };
+
+  // Helper function to validate email format
+const isValidEmail = (email) => {
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  return emailRegex.test(email);
+};
+
+// ------------------------------------recaptcha function-----------------
+  function onChange(value) {
+    console.log("Captcha value:", value);
+  }
+
+  // -----------------------------------end of recapture--------------------
+
+ 
+
+  // ----------------------------email.js---------------------------------
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -135,6 +193,7 @@ const ContactPage = () => {
                       setName(event.target.value);
                     }}
                   />
+                  { nameError && <p className="error">{nameError}</p> }
 
                   <label htmlFor="email">Email</label>
                   <input
@@ -149,6 +208,8 @@ const ContactPage = () => {
                     }}
                   />
 
+                  { emailError && <p className="error">{emailError}</p> }
+
                   <label htmlFor="message">Message</label>
                   <textarea
                     name="message"
@@ -160,6 +221,8 @@ const ContactPage = () => {
                       setMessage(event.target.value);
                     }}
                   />
+
+                   { messageError && <p className="error">{messageError}</p> }
 
                   <div className="recapture">
                     <ReCAPTCHA
