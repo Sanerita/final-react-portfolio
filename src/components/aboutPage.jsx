@@ -1,6 +1,5 @@
 import React from 'react';
-// import downloadCv from './assets/SILEKU-CV cpt.pdf"'
-
+import '../styles.css'
 
 const AboutPage = () => {
 
