@@ -2,7 +2,7 @@
 import React from 'react';
 import '../styles.css'
 import { useState } from "react";
-
+// import '../mediaQueries.css';
 
  function NavigationBar() {
   

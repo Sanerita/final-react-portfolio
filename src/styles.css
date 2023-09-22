@@ -121,6 +121,7 @@
 }
 
 
+
 /* home page */
 
 .app {
@@ -203,133 +204,6 @@
   padding-bottom: 5%;
   font-family: monaco, courier;
 }
-
-/*----------------------------------------Home Page Media Queries------------------------- */
-
-/* iPhone 12 Pro */
-@media screen and (max-width: 844px) {
-
-  .app {
-    font-family: Arial, sans-serif;
-  }
-  
-  .home-page {
-    height: 100vh;
-    background-image: url('assets/backgroundHome.jpg') ; 
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #111;
-    text-align: center;
-    
-  }
-  
-  .home-page h1 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    padding-top: 50%;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: cursor 1s step-start infinite, text 4s steps(12) alternate infinite;
-    font-family: monaco, courier;
-    
-  }
-  @keyframes cursor{
-    0%, 100%{
-      border-color: #fff;
-    }
-  }
-  @keyframes text{
-    0%{
-      width: 0;
-    }
-    100% {
-      width: 30.5ch;
-    }
-  }
-  .home-page p {
-    font-size: 1.2rem;
-    padding-bottom: 5%;
-    font-family: monaco, courier;
-  }
-  
-}
-
-/* iPad Mini */
-@media screen and (min-width: 768px) and (max-width: 834px) {
-  .app {
-    font-family: Arial, sans-serif;
-  }
-  
-  .home-page {
-    height: 100vh;
-    background-image: url('assets/backgroundHome.jpg') ; 
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #111;
-    text-align: center;
-    
-  }
-  
-  .home-page h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    padding-top: 50%;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: cursor 1s step-start infinite, text 4s steps(12) alternate infinite;
-    font-family: monaco, courier;
-    
-  }
-  @keyframes cursor{
-    0%, 100%{
-      border-color: #fff;
-    }
-  }
-  @keyframes text{
-    0%{
-      width: 0;
-    }
-    100% {
-      width: 30.5ch;
-    }
-  }
-  .home-page p {
-    font-size: 1.2rem;
-    padding-bottom: 5%;
-    font-family: monaco, courier;
-  }
-  
-}
-
-
-/* iPad Air */
-/* @media screen and (min-width: 835px) and (max-width: 1024px) {
-  .home-page {
-    background-size: contain; 
-  }
-} */
-
-/* Nest Hub */
-/* @media screen and (min-width: 1025px) and (max-width: 1280px) {
-  .home-page {
-    background-size: contain; 
-  }
-} */
-
-/* Nest Hub Max */
-/* @media screen and (min-width: 1281px) {
-  .home-page {
-    background-size: contain; /
-  }
-} */
 
 
 

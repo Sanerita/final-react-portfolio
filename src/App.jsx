@@ -2,6 +2,7 @@ import React from 'react';
 import NavigationBar from './components/NavigationBar';
 import HomePage from './components/HomePage';
 import './styles.css';
+import './mediaQueries.css';
 import AboutPage from './components/aboutPage';
 import Experience from './components/experience';
 import Projects from './components/Projects';

@@ -11,7 +11,7 @@ import { FaReact } from "react-icons/fa";
 import { FaCss3Alt } from "react-icons/fa";
 import { FaHtml5 } from "react-icons/fa";
 import React, { useState, useEffect } from 'react';
-
+// import '../mediaQueries.css';
 
 
 const experience = () => {

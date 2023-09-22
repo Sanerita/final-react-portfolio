@@ -5,7 +5,7 @@ import projectB from '../assets/projectB.png';
 import projectC from '../assets/projectC.png';
 import calculator from '../assets/calculator.png';
 import { FaGithub } from 'react-icons/fa';
-
+// import '../mediaQueries.css';
 
 
 const Projects = () => {
