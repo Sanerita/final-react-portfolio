@@ -549,15 +549,15 @@
     
     .contact-form label {
       font-weight: bold;
-      margin-top: 10px;
+      margin-top: 5px;
     
     }
     
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
+      padding: 8px;
+      margin-top: 0px;
       border: 1px solid #ccc;
       border-radius: 5px;
     }
@@ -629,23 +629,9 @@
         align-items: center;
       }
       
-      .whatsapp-button button {
-        background: none;
-        border: none;
-        color: inherit;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-      }
-      
-      .whatsapp-button button svg {
-        margin-right: 8px;
-      }
-      
-
   }
   
-  /* iPad Mini */
+  /*---------------------------------- iPad Mini------------------------- */
   @media screen and (min-width: 768px) and (max-width: 834px) {
     .app {
       font-family: Arial, sans-serif;

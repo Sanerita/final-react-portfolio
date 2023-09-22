@@ -65,6 +65,7 @@
   right: 25px;
   transform: translateY(-50%);
   display: none;
+  offset: 3s;
 }
 .hamburger:hover {
   background-color: #fff;
