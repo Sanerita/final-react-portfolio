@@ -12,7 +12,7 @@ const [isNavExpanded, setIsNavExpanded] = useState(false)
 
     return (
       <nav className="navigation">
-        <a href="/" className="brand-name">
+        <a href="#home-page" className="brand-name">
           S | SILEKU
         </a>
         <button
@@ -44,7 +44,7 @@ const [isNavExpanded, setIsNavExpanded] = useState(false)
 
           <ul>
             <li>
-              <a href="#HomePage">Home</a>
+              <a href="#home-page">Home</a>
             </li>
             <li>
               <a href="#about-page">About me</a>
