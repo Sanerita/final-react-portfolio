@@ -20,7 +20,10 @@ const ContactPage = () => {
       window.open(url, '_blank');
     };
   
- 
+  // ------------------------------email.js-------------------------
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [message, setMessage] = useState();
 
   // Add state variables for validation errors
 const [nameError, setNameError] = useState('');
@@ -64,11 +67,6 @@ const [messageError, setMessageError] = useState('');
     return;
   }
 // end of validating user input
-
- // ------------------------------email.js-------------------------
- const [name, setName] = useState();
- const [email, setEmail] = useState();
- const [message, setMessage] = useState();
 
     await addDoc(collection(db, 'data'),{
       name: name,

@@ -204,6 +204,135 @@
   font-family: monaco, courier;
 }
 
+/*----------------------------------------Home Page Media Queries------------------------- */
+
+/* iPhone 12 Pro */
+@media screen and (max-width: 844px) {
+
+  .app {
+    font-family: Arial, sans-serif;
+  }
+  
+  .home-page {
+    height: 100vh;
+    background-image: url('assets/backgroundHome.jpg') ; 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #111;
+    text-align: center;
+    
+  }
+  
+  .home-page h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    padding-top: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: cursor 1s step-start infinite, text 4s steps(12) alternate infinite;
+    font-family: monaco, courier;
+    
+  }
+  @keyframes cursor{
+    0%, 100%{
+      border-color: #fff;
+    }
+  }
+  @keyframes text{
+    0%{
+      width: 0;
+    }
+    100% {
+      width: 30.5ch;
+    }
+  }
+  .home-page p {
+    font-size: 1.2rem;
+    padding-bottom: 5%;
+    font-family: monaco, courier;
+  }
+  
+}
+
+/* iPad Mini */
+@media screen and (min-width: 768px) and (max-width: 834px) {
+  .app {
+    font-family: Arial, sans-serif;
+  }
+  
+  .home-page {
+    height: 100vh;
+    background-image: url('assets/backgroundHome.jpg') ; 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #111;
+    text-align: center;
+    
+  }
+  
+  .home-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    padding-top: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: cursor 1s step-start infinite, text 4s steps(12) alternate infinite;
+    font-family: monaco, courier;
+    
+  }
+  @keyframes cursor{
+    0%, 100%{
+      border-color: #fff;
+    }
+  }
+  @keyframes text{
+    0%{
+      width: 0;
+    }
+    100% {
+      width: 30.5ch;
+    }
+  }
+  .home-page p {
+    font-size: 1.2rem;
+    padding-bottom: 5%;
+    font-family: monaco, courier;
+  }
+  
+}
+
+
+/* iPad Air */
+/* @media screen and (min-width: 835px) and (max-width: 1024px) {
+  .home-page {
+    background-size: contain; 
+  }
+} */
+
+/* Nest Hub */
+/* @media screen and (min-width: 1025px) and (max-width: 1280px) {
+  .home-page {
+    background-size: contain; 
+  }
+} */
+
+/* Nest Hub Max */
+/* @media screen and (min-width: 1281px) {
+  .home-page {
+    background-size: contain; /
+  }
+} */
+
+
+
 /* About page */
 .about-page {
   /* background-image: url('assets/wp4779340-dark-purple-aesthetic-1920x1080-wallpapers.jpg'); 
@@ -214,9 +343,9 @@
   display: flex;
   flex-direction: column;
   font-family: monaco, courier;
-  background: linear-gradient(-45deg, #fff, #862e50, #269cc7, #f5deb3);
+  background: linear-gradient(-45deg, #fff, #1d1680, #269cc7, #fff);
 	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
+	animation: gradient 10s ease infinite;
 	height: 100vh;
 }
 
@@ -315,7 +444,8 @@
 }
 
 #CV-button:hover {
-  box-shadow: 0 12px 16px 0 	rgb(153,153,0), 0 17px 50px 0 	rgb(153,153,0);
+  box-shadow: 0 12px 16px 0 	 hsl(181deg 50% 20% );
+  background-color: #208eb6;
 }
 
 #CV-button  a{
@@ -324,22 +454,21 @@
   
 }
 #CV-button{
- 
+
   display: flex;
   justify-content: center;
   align-items: center;
-  display: flex;
-  width: 7em;
-  height: 2em;
-  font-size: .75rem;
-  color: white;
-  background-color: hsl(181deg 50% 20% / 70%);
-  margin: auto;
-  filter: drop-shadow(0rem 0rem 1.5rem #FFFF00);
-  border-style:hidden;
-  border-radius: 12px
-  
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: auto; 
 }
+
 
 /* experience */
 
@@ -351,9 +480,9 @@
   display: flex;
   flex-direction: column;
   font-family: monaco, courier;
-  background: linear-gradient(-45deg, #fff, #862e50, #269cc7, #f5deb3);
+  background: linear-gradient(-45deg, #fff, #1d1680, #269cc7, #fff);
 	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
+	animation: gradient 10s ease infinite;
 	height: 100vh;
 }
 
@@ -529,9 +658,9 @@ margin: 20%;
   display: flex;
   flex-direction: column;
   font-family: monaco, courier;
-  background: linear-gradient(-45deg, #fff, #862e50, #269cc7, #f5deb3);
+  background: linear-gradient(-45deg, #fff, #1d1680, #269cc7, #fff);
 	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
+	animation: gradient 10s ease infinite;
 	height: 100vh;
 }
 
@@ -591,17 +720,20 @@ margin: 20%;
   right: 0%;
   margin-left: 230px;
   margin-top: 30px;
+  font-family: monaco, courier;
 }
 
 .projects-intro h2 {
   font-size: 1.5rem;
   color: #333;
+  font-family: monaco, courier;
 }
 
 .projects-intro p {
   font-size: 1rem;
   color: #111;
   margin: 10px 0;
+  font-family: monaco, bold courier;
 }
 
 
@@ -729,9 +861,9 @@ margin: 20%;
   display: flex;
   flex-direction: column;
   font-family: monaco, courier;
-  background: linear-gradient(-45deg, #fff, #862e50, #269cc7, #f5deb3);
+  background: linear-gradient(-45deg, #fff, #1d1680, #269cc7, #fff);
 	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
+	animation: gradient 10s ease infinite;
 	height: 100vh;
 }
 
@@ -768,7 +900,7 @@ margin: 20%;
 }
 
 .contact-left p{
-color: #111;
+color: #fff;
 font-size: larger;
 
 }
