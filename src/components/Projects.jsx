@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles.css'
-import projectA from '../assets/projectA.png';
+import malimba from '../assets/malimba.png';
 import projectB from '../assets/projectB.png';
 import projectC from '../assets/projectC.png';
 import calculator from '../assets/calculator.png';
@@ -47,13 +47,13 @@ const Projects = () => {
       <div className="container">
   <div className="box">
     <div className="img-Box">
-      <img src={projectA} />
+      <img src={malimba} />
     </div>
     <div className="content">
       <div>
         <h2>HTML&CSS Website</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.</p>
-        <a href="https://github.com/yourusername/projectA" target="_blank" rel="noopener noreferrer">
+        <p>This is a business website that i did for a client but I am still developing it.</p>
+        <a href="https://github.com/Sanerita/Malimba-Website/tree/main/malimba" target="_blank" rel="noopener noreferrer">
           <button className='github-button'><FaGithub /> GitHub</button>
         </a>
       </div>
@@ -68,7 +68,7 @@ const Projects = () => {
         <h2> React Chat-App</h2> 
         <p>Allows users to engage in conversations with each other. It utilizes React for the 
           front-end, Node.js for the server-side, and Chat Engine for real-time messaging functionality.</p>
-        <a href="https://github.com/yourusername/projectB" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/Sanerita/CHAT-APP/tree/master/ChatBotWithReact-main" target="_blank" rel="noopener noreferrer">
           <button className='github-button'><FaGithub /> GitHub</button>
         </a>
       </div>
@@ -82,7 +82,7 @@ const Projects = () => {
       <div>
         <h2>Finance Calculator</h2>
         <p>Finance Calculator is a Python program that allows users to perform financial calculations such as investment and bond calculations.</p>
-        <a href="https://github.com/yourusername/calculator" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/Sanerita/Financial-calculator/tree/main/FinaceCalculator" target="_blank" rel="noopener noreferrer">
           <button className='github-button'><FaGithub /> GitHub</button>
         </a>
       </div>
@@ -95,8 +95,10 @@ const Projects = () => {
     <div className="content">
       <div>
         <h2>Python Bank-App</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi accusamus molestias quidem iusto.</p>
-        <a href="https://github.com/yourusername/projectC" target="_blank" rel="noopener noreferrer">
+        <p>The application allows users to create accounts, 
+          log in, deposit, withdraw and view transaction history.
+           It demonstrates basic concepts of classes, methods, and user interactions in Python.</p>
+        <a href="https://github.com/Sanerita/BANK-APP" target="_blank" rel="noopener noreferrer">
           <button className='github-button'><FaGithub /> GitHub</button>
         </a>
       </div>
