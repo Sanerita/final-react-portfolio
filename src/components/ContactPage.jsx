@@ -78,6 +78,7 @@ const [messageError, setMessageError] = useState('');
     setEmail('')
     setMessage('')
     alert('data sent!!');
+
   };
 
   const [emailData, setEmailData] = useState({
@@ -105,7 +106,7 @@ const isValidEmail = (email) => {
 
   // -----------------------------------end of recapture--------------------
 
- 
+
 
   // ----------------------------email.js---------------------------------
   const sendEmail = (e) => {
@@ -127,11 +128,39 @@ const isValidEmail = (email) => {
           console.error("Email could not be sent:", error);
         }
       );
-  };
+  }; 
+
+  // const sendEmail = (e) => {
+  //   e.preventDefault();
+  
+  //   const emailData = {
+  //     name: name,
+  //     email: email,
+  //     message: message,
+  //   };
+  
+  //   emailjs
+  //     .send(
+  //       "service_w2nkzvx",
+  //       "template_myomf27", 
+  //       emailData,
+  //       "rMsKsOElPPIg_aJHr" 
+  //     )
+  //     .then(
+  //       (response) => {
+  //         console.log("Email sent successfully:", response);
+  //       },
+  //       (error) => {
+  //         console.error("Email could not be sent:", error);
+  //       }
+  //     );
+  // };
+  
 
   // -------------------------end of email.js-------------------------------
 
-  document.cookie = "myCookie=myValue; SameSite=None; Secure";
+ 
+  document.cookie = "myCookie=myValue; SameSite=None; Secure"; // for catching cookies
 
 
 
@@ -185,7 +214,7 @@ const isValidEmail = (email) => {
                   <input
                     type="text"
                     id="name"
-                    name="name"
+                    name="from_name"
                     placeholder="Your Name"
                     required
                     value={name}
@@ -199,7 +228,7 @@ const isValidEmail = (email) => {
                   <input
                     type="email"
                     id="email"
-                    name="email"
+                    name="reply_to"
                     placeholder="Your Email"
                     required
                     value={email}
@@ -226,7 +255,7 @@ const isValidEmail = (email) => {
 
                   <div className="recapture">
                     <ReCAPTCHA
-                      sitekey="6LfmxkMoAAAAAEkNuggcZBysyLDQd95HtpxXra5U"
+                      sitekey="6LfmYkUoAAAAAJfPLa7V5nbVOs5zGoD6WXivA39J"
                       onChange={onChange}
                     />
                   </div>
