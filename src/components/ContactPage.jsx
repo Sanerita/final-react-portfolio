@@ -67,7 +67,7 @@ const [messageError, setMessageError] = useState('');
   if (!isValid) {
     return;
   }
-// end of validating user inpu
+// end of validating user input
     
 await addDoc(collection(db, 'data'),{
     name: name,
@@ -84,6 +84,11 @@ await addDoc(collection(db, 'data'),{
 
   };
 
+  const [emailData, setEmailData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
    // Helper function to validate name format
   const isValidName = (name) => {
@@ -107,11 +112,7 @@ const isValidEmail = (email) => {
  
 
   // ----------------------------email.js---------------------------------
-  const [emailData, setEmailData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+
 
   function handleInputChange(e) {
     const { name, value } = e.target;
@@ -128,8 +129,6 @@ const isValidEmail = (email) => {
 
     };
 
- 
-  
     emailjs
       .send(
         "service_w2nkzvx",
