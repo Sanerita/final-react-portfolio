@@ -85,7 +85,6 @@ await addDoc(collection(db, 'data'),{
   };
 
 
-
    // Helper function to validate name format
   const isValidName = (name) => {
     const nameRegex = /^[A-Za-z\-\'\s]+$/;
