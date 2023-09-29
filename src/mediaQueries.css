@@ -1,6 +1,6 @@
 
 /* iPhone 12 Pro */
-@media screen and (max-width: 844px) {
+@media screen and (min-width: 390px) and (max-width: 844px) {
 
     .app {
       font-family: Arial, sans-serif;
@@ -289,9 +289,6 @@
       background-color: #f3eded; 
       transform: translateY(-50%);
     }
-    
-    
-   
     
     
     
@@ -632,10 +629,13 @@
   }
   
   /*---------------------------------- iPad Mini------------------------- */
-  @media screen and (min-width: 768px) and (max-width: 834px) {
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
     .app {
       font-family: Arial, sans-serif;
     }
+
+
+/* ----------------------------homepage------------------- */
     
     .home-page {
       height: 100vh;
@@ -680,9 +680,15 @@
       font-family: monaco, courier;
     }
     
-
-
     
+  }
+
+  @media screen and (min-width: 320px) {
+
+    .app {
+      font-family: Arial, sans-serif;
+    }
+
   }
   
   

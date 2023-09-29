@@ -75,7 +75,9 @@
 @media screen and (max-width: 768px) {
   .hamburger {
     display: block;
+   
   }
+
 }
 /* this hides the ul element in navigation-menu */
 @media screen and (max-width: 768px) {
@@ -210,8 +212,6 @@
 
 /* About page */
 .about-page {
-  /* background-image: url('assets/wp4779340-dark-purple-aesthetic-1920x1080-wallpapers.jpg'); 
-  background-size: cover; */
   background-color: #d2d2d2;
   background-position: center;
   height: 100vh;

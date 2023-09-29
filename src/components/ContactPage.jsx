@@ -7,12 +7,12 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { FaEnvelope } from "react-icons/fa";
 import undrawPersonal from '../assets/undraw_personal_text_re_vqj3.svg';
-
+import { useRef } from 'react';
 
 
 const ContactPage = () => {
 
-  
+  const form = useRef();
     const openWhatsApp = () => {
       const phoneNumber = '+2765 968 2801'; // my whatsapp number
       const message = 'Hello, Lets get intouch!'; 
@@ -32,6 +32,7 @@ const [messageError, setMessageError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+   
 
     // Validate user input
   let isValid = true;
@@ -66,26 +67,24 @@ const [messageError, setMessageError] = useState('');
   if (!isValid) {
     return;
   }
-// end of validating user input
+// end of validating user inpu
+    
+await addDoc(collection(db, 'data'),{
+    name: name,
+    email: email,
+    message: message,
+  });
 
-    await addDoc(collection(db, 'data'),{
-      name: name,
-      email: email,
-      message: message,
-    });
+  
+  setName('')
+  setEmail('')
+  setMessage('')
+  alert('data sent!!');
 
-    setName('')
-    setEmail('')
-    setMessage('')
-    alert('data sent!!');
 
   };
 
-  const [emailData, setEmailData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+
 
    // Helper function to validate name format
   const isValidName = (name) => {
@@ -95,7 +94,7 @@ const [messageError, setMessageError] = useState('');
 
   // Helper function to validate email format
 const isValidEmail = (email) => {
-  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$/;
   return emailRegex.test(email);
 };
 
@@ -106,20 +105,39 @@ const isValidEmail = (email) => {
 
   // -----------------------------------end of recapture--------------------
 
-
+ 
 
   // ----------------------------email.js---------------------------------
+  const [emailData, setEmailData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  function handleInputChange(e) {
+    const { name, value } = e.target;
+    setEmailData({ ...emailData, [name]: value });
+  }
+
   const sendEmail = (e) => {
     e.preventDefault();
+  
+    const emailData = {
+      name: name,
+      email: email,
+      message: message,
 
+    };
+
+ 
+  
     emailjs
       .send(
         "service_w2nkzvx",
-        "template_ozn1ifc",
+        "template_myomf27", 
         emailData,
-        "rMsKsOElPPIg_aJHr"
+        "rMsKsOElPPIg_aJHr" 
       )
-
       .then(
         (response) => {
           console.log("Email sent successfully:", response);
@@ -128,33 +146,12 @@ const isValidEmail = (email) => {
           console.error("Email could not be sent:", error);
         }
       );
-  }; 
 
-  // const sendEmail = (e) => {
-  //   e.preventDefault();
-  
-  //   const emailData = {
-  //     name: name,
-  //     email: email,
-  //     message: message,
-  //   };
-  
-  //   emailjs
-  //     .send(
-  //       "service_w2nkzvx",
-  //       "template_myomf27", 
-  //       emailData,
-  //       "rMsKsOElPPIg_aJHr" 
-  //     )
-  //     .then(
-  //       (response) => {
-  //         console.log("Email sent successfully:", response);
-  //       },
-  //       (error) => {
-  //         console.error("Email could not be sent:", error);
-  //       }
-  //     );
-  // };
+   
+   
+      
+    
+  };
   
 
   // -------------------------end of email.js-------------------------------
@@ -209,17 +206,17 @@ const isValidEmail = (email) => {
                     Close Form &times;
                   </button>
                 </div>
-                <form className="contact-form" onSubmit={sendEmail}>
+                <form className="contact-form" ref={form}  onSubmit={sendEmail}>
                   <label htmlFor="name">Name</label>
                   <input
                     type="text"
                     id="name"
-                    name="from_name"
+                    name="name"
                     placeholder="Your Name"
                     required
                     value={name}
                     onChange={(event) => {
-                      setName(event.target.value);
+                      setName(event.target.value); {handleInputChange}
                     }}
                   />
                   { nameError && <p className="error">{nameError}</p> }
@@ -228,13 +225,13 @@ const isValidEmail = (email) => {
                   <input
                     type="email"
                     id="email"
-                    name="reply_to"
+                    name="email"
                     placeholder="Your Email"
                     required
                     value={email}
                     onChange={(event) => {
-                      setEmail(event.target.value);
-                    }}
+                      setEmail(event.target.value); {handleInputChange}
+                    }} 
                   />
 
                   { emailError && <p className="error">{emailError}</p> }
@@ -247,7 +244,7 @@ const isValidEmail = (email) => {
                     required
                     value={message}
                     onChange={(event) => {
-                      setMessage(event.target.value);
+                      setMessage(event.target.value);{handleInputChange}
                     }}
                   />
 
@@ -260,7 +257,7 @@ const isValidEmail = (email) => {
                     />
                   </div>
 
-                  <button type="submit" onClick={handleSubmit}>
+                  <button type="submit" onSubmit={handleSubmit}>
                     Send
                   </button>
                 </form>
