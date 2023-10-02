@@ -16,14 +16,14 @@ import React, { useState, useEffect } from 'react';
 
 const experience = () => {
 
- 
+
   const [internetFacts, setInternetFacts] = useState([
     { year: "2019 - 2020", fact: "Air Traffic and Navigation Services" },
     { year: "2020 - 2021", fact: "Astrofica Technologies" },
     { year: "2023/02 - 2023/07", fact: "UVU Africa (CapaCiTi)" },
     { year: "2023/07 - current", fact: "Younglings VA" },
   ]);
-  
+
 
   const [currentPage, setCurrentPage] = useState(0);
   const pagesToShow = 4; // Number of pages to show at once
@@ -108,155 +108,155 @@ const experience = () => {
       setCurrentPage(pageNumber);
     }
   }
- 
-   // Initial rendering
-   renderFact();
-   updatePaginationDots();
-  
+
+  // Initial rendering
+  renderFact();
+  updatePaginationDots();
+
 
 
   return (
 
     <section id='experience'>
-    <div className="my-experience">
+      <div className="my-experience">
 
-        <div className='exp-title'> 
-            <h2>EXPERIENCE</h2>
+        <div className='exp-title'>
+          <h2>EXPERIENCE</h2>
         </div>
         {/* -------------------------------------------- */}
-                <div className='exp-colums'>
+        <div className='exp-colums'>
 
 
 
-    <div id="facts-container">
-      <div id="fact-display"></div>
-      <div id="pagination-dots">
-      	  <span id="prev-arrow">←</span>
-  				<span id="next-arrow">→</span>
-      </div>
-    </div>
- 
-
-    <div className='skills-title'>
-    <h3>TECH-SKILLS</h3>
-    </div>
-        
-   
-
-        {/* -------------------------------------------- */}
-      <div className='article-items'>
-        <div className='left-block'> 
-            <h2>FRONT-END</h2>
-            <br/>
-            <div className="article-container">
-              <article>
-                <FaHtml5 />
-                <div>
-                  <h4>HTML</h4>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <FaCss3Alt />
-                <div>
-                  <h4>CSS</h4>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <div>
-                <FaReact />
-                </div>
-                <div>
-                  <h4>React</h4>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <div>
-                <TbBrandJavascript/>
-                </div>
-                <div>
-                  <h4>JavaScript</h4>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              
-              <article>
-                <div>
-                <FaWordpressSimple />
-                </div>
-                <div>
-                  <h4>Wordpress</h4>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              
+          <div id="facts-container">
+            <div id="fact-display"></div>
+            <div id="pagination-dots">
+              <span id="prev-arrow">←</span>
+              <span id="next-arrow">→</span>
             </div>
+          </div>
 
-        </div>
-   
 
-        <div className='right-block'> 
-            <h2>BACK-END</h2><br/>
-            <div className="article-container">
-              <article>
-                <div>
-                  <FaJava />
+          <div className='skills-title'>
+            <h3>TECH-SKILLS</h3>
+          </div>
+
+
+
+          {/* -------------------------------------------- */}
+          <div className='article-items'>
+            <div className='left-block'>
+              <h2>FRONT-END</h2>
+              <br />
+              <div className="article-container">
+                <article>
+                  <FaHtml5 />
+                  <div>
+                    <h4>HTML</h4>
+                    <p>Experienced</p>
                   </div>
-                <div>
-                  <h4>Java</h4>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-               <div>
-               <BsFiletypeSql />
-               </div>
-                <div>
-                  <h4>SQL</h4>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <div>
-                <FaNodeJs />
-                </div>
-                <div>
-                  <h4>Node JS</h4>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-              <div>
-                <SiFirebase />
+                </article>
+                <article>
+                  <FaCss3Alt />
+                  <div>
+                    <h4>CSS</h4>
+                    <p>Experienced</p>
+                  </div>
+                </article>
+                <article>
+                  <div>
+                    <FaReact />
+                  </div>
+                  <div>
+                    <h4>React</h4>
+                    <p>Experienced</p>
+                  </div>
+                </article>
+                <article>
+                  <div>
+                    <TbBrandJavascript />
+                  </div>
+                  <div>
+                    <h4>JavaScript</h4>
+                    <p>Intermediate</p>
+                  </div>
+                </article>
+
+                <article>
+                  <div>
+                    <FaWordpressSimple />
+                  </div>
+                  <div>
+                    <h4>Wordpress</h4>
+                    <p>Intermediate</p>
+                  </div>
+                </article>
+
               </div>
-                <div>
-                  <h4>Firebase</h4>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              
-              <article>
-             <div>
-                 <FaGitAlt />
-                 </div>
-                <div>
-                  <h4>Git</h4>
-                  <p>Experienced</p>
-                </div>
-              </article>
-            </div>
 
             </div>
-        </div>
+
+
+            <div className='right-block'>
+              <h2>BACK-END</h2><br />
+              <div className="article-container">
+                <article>
+                  <div>
+                    <FaJava />
+                  </div>
+                  <div>
+                    <h4>Java</h4>
+                    <p>Intermediate</p>
+                  </div>
+                </article>
+                <article>
+                  <div>
+                    <BsFiletypeSql />
+                  </div>
+                  <div>
+                    <h4>SQL</h4>
+                    <p>Intermediate</p>
+                  </div>
+                </article>
+                <article>
+                  <div>
+                    <FaNodeJs />
+                  </div>
+                  <div>
+                    <h4>Node JS</h4>
+                    <p>Experienced</p>
+                  </div>
+                </article>
+                <article>
+                  <div>
+                    <SiFirebase />
+                  </div>
+                  <div>
+                    <h4>Firebase</h4>
+                    <p>Experienced</p>
+                  </div>
+                </article>
+
+                <article>
+                  <div>
+                    <FaGitAlt />
+                  </div>
+                  <div>
+                    <h4>Git</h4>
+                    <p>Experienced</p>
+                  </div>
+                </article>
+              </div>
+
+            </div>
+          </div>
         </div>
 
-    </div>
+      </div>
     </section>
-    
+
   );
-  
+
 };
 
 export default experience;

@@ -6,8 +6,8 @@ const AboutPage = () => {
 
 
 
-    return (
-      <section id='about-page'>
+  return (
+    <section id='about-page'>
       <div className="about-page">
         <div className="title">
           <h2>ABOUT ME</h2>
@@ -38,9 +38,9 @@ const AboutPage = () => {
             <button id="CV-button">DownloadCV</button>
           </a>
         </div>
-        </div>
-      </section>
-    );
+      </div>
+    </section>
+  );
 };
 
 export default AboutPage;

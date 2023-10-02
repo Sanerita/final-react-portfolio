@@ -221,8 +221,8 @@
   background: linear-gradient(-45deg, #fff, #1d1680, #269cc7, #fff);
 	background-size: 400% 400%;
 	animation: gradient 10s ease infinite;
-	height: 100vh;
 }
+
 
 @keyframes gradient {
 	0% {
@@ -585,7 +585,7 @@ margin: 20%;
 /* -------------------------------------------------------- */
 
 .projects-intro {
-  background-color: hsla(180, 39%, 95%, 0.60);/* Transparent white background */
+  background-color: hsla(180, 39%, 95%, 0.60);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
@@ -596,6 +596,7 @@ margin: 20%;
   margin-left: 230px;
   margin-top: 30px;
   font-family: monaco, courier;
+  
 }
 
 .projects-intro h2 {
@@ -610,6 +611,7 @@ margin: 20%;
   margin: 10px 0;
   font-family: monaco, bold courier;
 }
+
 
 
 .container {
