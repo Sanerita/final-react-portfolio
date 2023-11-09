@@ -98,7 +98,7 @@ const Projects = () => {
               <div>
                 <h2>React Business website</h2>
                 <p>This is a local business website built with react.js and css</p>
-                <a href="https://github.com/Sanerita/BANK-APP" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/Sanerita/Business-Website" target="_blank" rel="noopener noreferrer">
                   <button className='github-button'><FaGithub /> GitHub</button>
                 </a>
               </div>
