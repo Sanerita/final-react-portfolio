@@ -7,7 +7,7 @@ const HomePage = () => {
     <section id='home-page'>
     <div className="home-page" >
       <h1>HI, I'M SANELISIWE SILEKU</h1>
-      <p>A FRONT-END SOFTWARE DEVELOPER </p>
+      <p>A passionate MERN Stack Developer </p>
     </div>
     </section>
   );
