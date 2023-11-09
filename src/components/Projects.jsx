@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles.css'
 import malimba from '../assets/malimba.png';
 import projectB from '../assets/projectB.png';
-import projectC from '../assets/projectC.png';
+import Nezzies from '../assets/Nezzies.png';
 import calculator from '../assets/calculator.png';
 import { FaGithub } from 'react-icons/fa';
 // import '../mediaQueries.css';
@@ -52,7 +52,8 @@ const Projects = () => {
             <div className="content">
               <div>
                 <h2>HTML&CSS Website</h2>
-                <p>This is a business website that i did for a client but I am still developing it.</p>
+                <p>This is a transport service business website 
+                  that is built with HTML5 and CSS and it is still under development</p>
                 <a href="https://github.com/Sanerita/Malimba-Website/tree/main/malimba" target="_blank" rel="noopener noreferrer">
                   <button className='github-button'><FaGithub /> GitHub</button>
                 </a>
@@ -81,7 +82,8 @@ const Projects = () => {
             <div className="content">
               <div>
                 <h2>Finance Calculator</h2>
-                <p>Finance Calculator is a Python program that allows users to perform financial calculations such as investment and bond calculations.</p>
+                <p>Finance Calculator is a Python program that allows users to perform 
+                  financial calculations such as investment and bond calculations.</p>
                 <a href="https://github.com/Sanerita/Financial-calculator/tree/main/FinaceCalculator" target="_blank" rel="noopener noreferrer">
                   <button className='github-button'><FaGithub /> GitHub</button>
                 </a>
@@ -90,14 +92,12 @@ const Projects = () => {
           </div>
           <div className="box">
             <div className="img-Box">
-              <img src={projectC} />
+              <img src={Nezzies} />
             </div>
             <div className="content">
               <div>
-                <h2>Python Bank-App</h2>
-                <p>The application allows users to create accounts,
-                  log in, deposit, withdraw and view transaction history.
-                  It demonstrates basic concepts of classes, methods, and user interactions in Python.</p>
+                <h2>React Business website</h2>
+                <p>This is a local business website built with react.js and css</p>
                 <a href="https://github.com/Sanerita/BANK-APP" target="_blank" rel="noopener noreferrer">
                   <button className='github-button'><FaGithub /> GitHub</button>
                 </a>
