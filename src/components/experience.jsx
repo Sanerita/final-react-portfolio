@@ -17,10 +17,10 @@ import React, { useState, useEffect } from 'react';
 const experience = () => {
 
 
-  const [internetFacts, setInternetFacts] = useState([
+  const [internetFacts] = useState([
     { year: "2019 - 2020", fact: "Air Traffic and Navigation Services" },
     { year: "2020 - 2021", fact: "Astrofica Technologies" },
-    { year: "2023/02 - 2023/07", fact: "UVU Africa (CapaCiTi)" },
+    { year: "2023/02 - 2023/07",fact: "UVU Africa (CapaCiTi)" },
     { year: "2023/07 - current", fact: "Younglings VA" },
   ]);
 

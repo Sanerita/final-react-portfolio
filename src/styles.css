@@ -93,9 +93,10 @@
     left: 0; 
     flex-direction: column;
     width: 100%;
-    height: calc(100vh - 77px);
-    background-color: white;
+    height: calc(50vh - 20px);
+    background-color: hsl(181deg 50% 20% / 70%);
     border-top: 1px solid black;
+    border-radius: 50px;
   }
   .navigation-menu li {
     text-align: center;
@@ -107,7 +108,7 @@
     padding: 1.5rem 0;
   }
   .navigation-menu li:hover {
-    background-color: #eee;
+    background-color: #dad9d9;
   }
 }
 @media screen and (max-width: 768px) {
@@ -521,12 +522,15 @@ article .icon {
   display: flex;
   justify-content: space-around;
 margin-top: -20%;
+
 }
 
 .exp-colums{
 display: flex;
 flex-direction: column;
-margin: 20%;
+margin: 30%;
+margin-bottom: -10%;
+margin-top: 10%;
 }
 
 /* projects */
