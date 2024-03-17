@@ -30,7 +30,7 @@ const AboutPage = () => {
           </p>
 
           <a
-            onClick={() => window.open("https://drive.google.com/file/d/1MLs8OZYoTN9s5Ntb58a0wO32tHsUkJq9/view?usp=sharing")}
+            onClick={() => window.open("https://drive.google.com/file/d/1AcbRqagEk64yib8WW91UKjZr4yStgn6n/view?usp=sharing")}
             className="btn"
           >
             <button id="CV-button">DownloadCV</button>
