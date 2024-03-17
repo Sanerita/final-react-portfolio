@@ -23,10 +23,8 @@ const AboutPage = () => {
             and I'd like to take this chance to introduce myself as a software
             developer. My passion lies in crafting innovative and efficient
             software solutions. <br />
-            Over the course of my career, I've been fortunate enough to work on
-            a diverse range of projects, each contributing to my personal and
-            professional growth as a developer. I specialize in areas such as
-            web applications and desktop applications. My goal is to
+            I am experienced in developing web applications and am currently
+            expanding my skills to include mobile application development. My goal is to
             consistently deliver code of the highest quality, meeting both
             functional and aesthetic requirements.
           </p>
