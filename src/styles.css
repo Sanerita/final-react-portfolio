@@ -178,35 +178,41 @@
 
 
 /* ------------------------------------------------------------------------------------ */
-.home-page h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  padding-top: 50%;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: cursor 1s step-start infinite, text 4s steps(12) alternate infinite;
-  font-family: monaco, courier;
-  
-}
-@keyframes cursor{
-  0%, 100%{
-    border-color: #fff;
-  }
-}
-@keyframes text{
-  0%{
-    width: 0;
-  }
-  100% {
-    width: 30.5ch;
-  }
-}
+  .home-page h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    padding-top: 40%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: cursor 1s step-start infinite, text 4s steps(12) alternate infinite;
+    font-family: monaco, courier;
 
-.home-page p {
-  font-size: 1.2rem;
-  padding-bottom: 5%;
-  font-family: monaco, courier;
-}
+  }
+
+  @keyframes cursor {
+
+    0%,
+    100% {
+      border-color: #fff;
+    }
+  }
+
+  @keyframes text {
+    0% {
+      width: 0;
+    }
+
+    100% {
+      width: 30.5ch;
+    }
+  }
+
+  .home-page p {
+    font-size: 1.2rem;
+    padding-bottom: 5%;
+    font-family: monaco, courier;
+  }
+
 
 
 

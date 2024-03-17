@@ -22,7 +22,7 @@
   .home-page h1 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    padding-top: 50%;
+    padding-top: 40%;
     white-space: nowrap;
     overflow: hidden;
     animation: cursor 1s step-start infinite, text 4s steps(12) alternate infinite;
