@@ -1,284 +1,217 @@
-import React from "react";
-import { FaWhatsapp } from "react-icons/fa";
+import React, { useState, useRef } from "react";
+import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import emailjs from "emailjs-com";
-import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
-import { FaEnvelope } from "react-icons/fa";
 import undrawPersonal from '../assets/undraw_personal_text_re_vqj3.svg';
-import { useRef } from 'react';
-
 
 const ContactPage = () => {
-
   const form = useRef();
-    const openWhatsApp = () => {
-      const phoneNumber = '+2765 968 2801'; // my whatsapp number
-      const message = 'Hello, Lets get intouch!'; 
-      const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank');
-    };
-  
-  // ------------------------------email.js-------------------------
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [message, setMessage] = useState();
 
-  // Add state variables for validation errors
-const [nameError, setNameError] = useState('');
-const [emailError, setEmailError] = useState('');
-const [messageError, setMessageError] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [messageError, setMessageError] = useState("");
+
+  const [isOpen, setIsOpen] = useState(false); // Define isOpen here
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closePopup = () => {
+    setIsOpen(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
 
-    // Validate user input
-  let isValid = true;
+    let isValid = true;
 
-  if (name.trim() === '') {
-    setNameError('Name is required');
-    isValid = false;
-  } else if (!isValidName(name)) {
-    setNameError('Invalid name format');
-    isValid = false;
-  } else {
-    setNameError('');
-  }
+    if (name.trim() === "") {
+      setNameError("Name is required");
+      isValid = false;
+    } else if (!isValidName(name)) {
+      setNameError("Invalid name format");
+      isValid = false;
+    } else {
+      setNameError("");
+    }
 
-  if (email.trim() === '') {
-    setEmailError('Email is required');
-    isValid = false;
-  } else if (!isValidEmail(email)) {
-    setEmailError('Invalid email format');
-    isValid = false;
-  } else {
-    setEmailError('');
-  }
+    if (email.trim() === "") {
+      setEmailError("Email is required");
+      isValid = false;
+    } else if (!isValidEmail(email)) {
+      setEmailError("Invalid email format");
+      isValid = false;
+    } else {
+      setEmailError("");
+    }
 
-  if (message.trim() === '') {
-    setMessageError('Message is required');
-    isValid = false;
-  } else {
-    setMessageError('');
-  }
+    if (message.trim() === "") {
+      setMessageError("Message is required");
+      isValid = false;
+    } else {
+      setMessageError("");
+    }
 
-  if (!isValid) {
-    return;
-  }
-// end of validating user input
-    
-await addDoc(collection(db, 'data'),{
-    name: name,
-    email: email,
-    message: message,
-  });
+    if (!isValid) {
+      return;
+    }
 
-  
-  setName('')
-  setEmail('')
-  setMessage('')
-  alert('data sent!!');
+    await addDoc(collection(db, 'data'), {
+      name: name,
+      email: email,
+      message: message,
+    });
 
-
+    sendEmail();
+    setName("");
+    setEmail("");
+    setMessage("");
+    alert('Data sent!!');
   };
 
-  const [emailData, setEmailData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-   // Helper function to validate name format
   const isValidName = (name) => {
     const nameRegex = /^[A-Za-z\-\'\s]+$/;
     return nameRegex.test(name);
   };
 
-  // Helper function to validate email format
-const isValidEmail = (email) => {
-  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$/;
-  return emailRegex.test(email);
-};
+  const isValidEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$/;
+    return emailRegex.test(email);
+  };
 
-// ------------------------------------recaptcha function-----------------
-  function onChange(value) {
-    console.log("Captcha value:", value);
-  }
-
-  // -----------------------------------end of recapture--------------------
-
- 
-
-  // ----------------------------email.js---------------------------------
-
-
-  function handleInputChange(e) {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setEmailData({ ...emailData, [name]: value });
-  }
+    if (name === "name") {
+      setName(value);
+    } else if (name === "email") {
+      setEmail(value);
+    } else if (name === "message") {
+      setMessage(value);
+    }
+  };
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-  
+  const openWhatsApp = () => {
+    const phoneNumber = '+2765 968 2801';
+    const message = 'Hello, Let\'s get in touch!';
+    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  };
+
+  const sendEmail = () => {
     const emailData = {
       name: name,
       email: email,
       message: message,
-
     };
 
-    emailjs
-      .send(
-        "service_w2nkzvx",
-        "template_myomf27", 
-        emailData,
-        "rMsKsOElPPIg_aJHr" 
-      )
-      .then(
-        (response) => {
-          console.log("Email sent successfully:", response);
-        },
-        (error) => {
-          console.error("Email could not be sent:", error);
-        }
-      );
-
-   
-   
-      
-    
+    emailjs.send(
+      "service_w2nkzvx",
+      "template_myomf27", 
+      emailData,
+      "rMsKsOElPPIg_aJHr" 
+    )
+    .then((response) => {
+      console.log("Email sent successfully:", response);
+    })
+    .catch((error) => {
+      console.error("Email could not be sent:", error);
+    });
   };
-  
 
-  // -------------------------end of email.js-------------------------------
+  const onChange = (value) => {
+    console.log("Captcha value:", value);
+  };
 
- 
-  document.cookie = "myCookie=myValue; SameSite=None; Secure"; // for catching cookies
-
-
-
-  // --------------------------------------------------------
-
-  
-    const [isOpen, setIsOpen] = useState(false);
-  
-    const togglePopup = () => {
-      setIsOpen(!isOpen);
-    };
-  
-    const closePopup = () => {
-      setIsOpen(false);
-    };
-  
-  
-
-
-  //--------------------------------------------------------- 
-  
   return (
-
     <section id="ContactPage">
-    <div className="contact-me">
-      <div className="contact-title">
-        <h2>CONTACT ME</h2>
-      </div>
-
-      <div className="contact-colums">
-        <div className="contact-left">
-          <p>
-            If you have any questions or inquiries, feel free to CLICK on the envelope to get in touch!
-          </p>
-          <br />
-          {/*------------------------------------------------------------------------------ */}
-          <div className={`contact-popup ${isOpen ? "open" : ""}`}>
-            {!isOpen && (
-              <FaEnvelope className="envelope-icon" onClick={togglePopup} />
-            )}
-            {isOpen && (
-              <div className="popup-content">
-                <div className="popup-header">
-                  <button className="close-button" onClick={closePopup}>
-                    {" "}
-                    Close Form &times;
-                  </button>
-                </div>
-                <form className="contact-form" ref={form}  onSubmit={sendEmail}>
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Your Name"
-                    required
-                    value={name}
-                    onChange={(event) => {
-                      setName(event.target.value); {handleInputChange}
-                    }}
-                  />
-                  { nameError && <p className="error">{nameError}</p> }
-
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Your Email"
-                    required
-                    value={email}
-                    onChange={(event) => {
-                      setEmail(event.target.value); {handleInputChange}
-                    }} 
-                  />
-
-                  { emailError && <p className="error">{emailError}</p> }
-
-                  <label htmlFor="message">Message</label>
-                  <textarea
-                    name="message"
-                    placeholder="write your message"
-                    id="message"
-                    required
-                    value={message}
-                    onChange={(event) => {
-                      setMessage(event.target.value);{handleInputChange}
-                    }}
-                  />
-
-                   { messageError && <p className="error">{messageError}</p> }
-
-                  <div className="recapture">
-                    <ReCAPTCHA
-                      sitekey="6LfmYkUoAAAAAJfPLa7V5nbVOs5zGoD6WXivA39J"
-                      onChange={onChange}
-                    />
-                  </div>
-
-                  <button type="submit" onSubmit={handleSubmit}>
-                    Send
-                  </button>
-                </form>
-              </div>
-            )}
-          </div>
-
-          {/* ------------------------------------------------------------------------------- */}
-
-         
+      <div className="contact-me">
+        <div className="contact-title">
+          <h2>CONTACT ME</h2>
         </div>
 
-        <div className="whatsapp-button">
-      <button onClick={openWhatsApp}>
-        <FaWhatsapp />
-        Chat on WhatsApp
-      </button>
-    </div>
+        <div className="contact-colums">
+          <div className="contact-left">
+            <p>
+              If you have any questions or inquiries, feel free to CLICK on the envelope to get in touch!
+            </p>
+            <br />
+            <div className={`contact-popup ${isOpen ? "open" : ""}`}>
+              {!isOpen && (
+                <FaEnvelope className="envelope-icon" onClick={togglePopup} />
+              )}
+              {isOpen && (
+                <div className="popup-content">
+                  <div className="popup-header">
+                    <button className="close-button" onClick={closePopup}>
+                      {" "}
+                      Close Form &times;
+                    </button>
+                  </div>
+                  <form className="contact-form" ref={form} onSubmit={handleSubmit}>
+                    <label htmlFor="name">Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="Your Name"
+                      required
+                      value={name}
+                      onChange={handleInputChange}
+                    />
+                    { nameError && <p className="error">{nameError}</p> }
 
-    <img className ="undrawPersonal" src={undrawPersonal} alt="Personal SVG" />
+                    <label htmlFor="email">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="Your Email"
+                      required
+                      value={email}
+                      onChange={handleInputChange}
+                    />
+                    { emailError && <p className="error">{emailError}</p> }
 
+                    <label htmlFor="message">Message</label>
+                    <textarea
+                      name="message"
+                      placeholder="write your message"
+                      id="message"
+                      required
+                      value={message}
+                      onChange={handleInputChange}
+                    />
+                    { messageError && <p className="error">{messageError}</p> }
+
+                    <div className="recapture">
+                      <ReCAPTCHA
+                        sitekey="6LfmYkUoAAAAAJfPLa7V5nbVOs5zGoD6WXivA39J"
+                        onChange={onChange}
+                      />
+                    </div>
+
+                    <button type="submit">Send</button>
+                  </form>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="whatsapp-button">
+            <button onClick={openWhatsApp}>
+              <FaWhatsapp />
+              Chat on WhatsApp
+            </button>
+          </div>
+          <img className ="undrawPersonal" src={undrawPersonal} alt="Personal SVG" />
+        </div>
       </div>
-    </div>
     </section>
   );
 };
