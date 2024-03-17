@@ -23,17 +23,12 @@ const Projects = () => {
             <h2>Welcome to My Portfolio of Diverse Projects</h2>
             <p>
               Explore a collection of my projects that showcase my journey in
-              web development and desktop applications. From crafting engaging
-              HTML & CSS websites to building dynamic React applications and
-              sharing a Java application which I've done during my university
-              studies, my portfolio reflects my dedication to continuous
+              Software Development. From crafting engaging
+              HTML, CSS & JavaScript websites to building dynamic React applications 
+               my portfolio reflects my dedication to continuous
               learning and problem-solving.
             </p>
-            <p>
-              Whether you're interested in front-end web development or modern
-              JavaScript applications, you'll find a variety of projects that
-              highlight my skills and experiences.
-            </p>
+           <br/>
             <p>
               Click on the projects to learn more, explore the source code on
               GitHub, and experience live demos where available. If you have any
@@ -54,7 +49,7 @@ const Projects = () => {
                 <h2>HTML&CSS Website</h2>
                 <p>
                   This is a transport service business website that is built
-                  with HTML5 and CSS and it is still under development
+                  with HTML5 and CSS.
                 </p>
             
                 {/* ---------------------------------------- */}
@@ -91,12 +86,12 @@ const Projects = () => {
               <div>
                 <h2> React Chat-App</h2>
                 <p>
-                  Allows users to engage in conversations with each other. It
-                  utilizes React for the front-end, Node.js for the server-side,
-                  and Chat Engine for real-time messaging functionality.
+                 TOAST is a Full Stack Chatting App. It Uses Socket.io for real time
+                  communication and stores user details in encrypted format in Mongo 
+                  DB Database.
                 </p>
                 <a
-                  href="https://github.com/Sanerita/CHAT-APP/tree/master/ChatBotWithReact-main"
+                  href="https://github.com/Sanerita/Chat-application"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
