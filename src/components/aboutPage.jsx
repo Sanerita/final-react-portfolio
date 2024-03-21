@@ -27,8 +27,9 @@ const AboutPage = () => {
             expanding my skills to include mobile application development. My goal is to
             consistently deliver code of the highest quality, meeting both
             functional and aesthetic requirements.
+        
           </p>
-
+<br/>
           <a
             onClick={() => window.open("https://drive.google.com/file/d/1AcbRqagEk64yib8WW91UKjZr4yStgn6n/view?usp=sharing")}
             className="btn"

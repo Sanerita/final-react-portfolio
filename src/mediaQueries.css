@@ -57,8 +57,7 @@
   /* ------------about page--------------- */
 
   .about-page {
-    background-color: #d2d2d2;
-    background-position: center;
+    
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -66,7 +65,7 @@
     background: linear-gradient(-45deg, #fff, #1d1680, #269cc7, #fff);
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
-    height: 100vh;
+   
   }
 
   @keyframes gradient {
@@ -163,14 +162,14 @@
 
     background-color: #d2d2d2;
     background-position: center;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     font-family: monaco, courier;
     background: linear-gradient(-45deg, #fff, #1d1680, #269cc7, #fff);
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
-    height: 100vh;
+    
   }
 
   @keyframes gradient {
@@ -252,6 +251,17 @@
 
   /* ---------------------------experience page-------------------------------- */
 
+.my-experience {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: monaco, courier;
+  background: linear-gradient(-45deg, #fff, #1d1680, #269cc7, #fff);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  
+}
+
   .skills-title {
     text-align: center;
     margin-bottom: 8%;
@@ -263,7 +273,7 @@
   #facts-container {
     background-color: hsla(180, 39%, 95%, 0.60);
     border-radius: 15px;
-    padding: 30px 0;
+    padding: 20px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
     margin-top: -20%;
@@ -304,7 +314,7 @@
 
 
   .left-block {
-    height: auto;
+    
     left: 0;
     margin: 0px;
     margin-bottom: 100%;
@@ -315,7 +325,7 @@
   }
 
   .right-block {
-    height: auto;
+    
     right: 0;
     margin: 0px;
     margin-bottom: 100%;
@@ -364,7 +374,7 @@
   .projects-page {
 
     background-position: center;
-    height: 230vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     font-family: monaco, courier;
@@ -397,8 +407,8 @@
 
 
   .projects-intro {
-    max-width: 610px;
-    min-height: 345px;
+    max-width: 70%;
+    min-height: 34%;
     max-height: 445px;
     margin: 0;
     margin-left: 0px;
@@ -502,7 +512,7 @@
   .contact-me {
     background-color: #d2d2d2;
     background-position: center;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     font-family: monaco, courier;
