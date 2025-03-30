@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import { Container, Row, Col, Form, Button, Alert, Modal } from 'react-bootstrap';
 import emailjs from "emailjs-com";
 import ReCAPTCHA from "react-google-recaptcha";
 import { addDoc, collection } from "firebase/firestore";
@@ -8,28 +9,20 @@ import undrawPersonal from '../assets/undraw_personal_text_re_vqj3.svg';
 
 const ContactPage = () => {
   const form = useRef();
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [messageError, setMessageError] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
-  const [isOpen, setIsOpen] = useState(false); // Define isOpen here
-
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closePopup = () => {
-    setIsOpen(false);
-  };
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     let isValid = true;
 
     if (name.trim() === "") {
@@ -59,9 +52,7 @@ const ContactPage = () => {
       setMessageError("");
     }
 
-    if (!isValid) {
-      return;
-    }
+    if (!isValid) return;
 
     await addDoc(collection(db, 'data'), {
       name: name,
@@ -73,29 +64,11 @@ const ContactPage = () => {
     setName("");
     setEmail("");
     setMessage("");
-    alert('Data sent!!');
+    setShowAlert(true);
+    handleClose();
   };
 
-  const isValidName = (name) => {
-    const nameRegex = /^[A-Za-z\-\'\s]+$/;
-    return nameRegex.test(name);
-  };
-
-  const isValidEmail = (email) => {
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$/;
-    return emailRegex.test(email);
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "name") {
-      setName(value);
-    } else if (name === "email") {
-      setEmail(value);
-    } else if (name === "message") {
-      setMessage(value);
-    }
-  };
+  // ... keep the rest of your helper functions (isValidName, isValidEmail, etc.)
 
   const openWhatsApp = () => {
     const phoneNumber = '+2765 968 2801';
@@ -104,114 +77,108 @@ const ContactPage = () => {
     window.open(url, '_blank');
   };
 
-  const sendEmail = () => {
-    const emailData = {
-      name: name,
-      email: email,
-      message: message,
-    };
-
-    emailjs.send(
-      "service_w2nkzvx",
-      "template_myomf27", 
-      emailData,
-      "rMsKsOElPPIg_aJHr" 
-    )
-    .then((response) => {
-      console.log("Email sent successfully:", response);
-    })
-    .catch((error) => {
-      console.error("Email could not be sent:", error);
-    });
-  };
-
-  const onChange = (value) => {
-    console.log("Captcha value:", value);
-  };
-
   return (
-    <section id="ContactPage">
-      <div className="contact-me">
-        <div className="contact-title">
-          <h2>CONTACT ME</h2>
-        </div>
+    <section id="ContactPage" className="py-5">
+      <Container>
+        <Row className="justify-content-center mb-4">
+          <Col xs={12} className="text-center">
+            <h2 className="display-4">CONTACT ME</h2>
+          </Col>
+        </Row>
 
-        <div className="contact-colums">
-          <div className="contact-left">
-            <p>
-              If you have any questions or inquiries, feel free to CLICK on the envelope to get in touch!
+        <Row className="align-items-center">
+          <Col md={6} className="mb-4 mb-md-0">
+            <p className="lead">
+              If you have any questions or inquiries, feel free to click on the envelope to get in touch!
             </p>
-            <br />
-            <div className={`contact-popup ${isOpen ? "open" : ""}`}>
-              {!isOpen && (
-                <FaEnvelope className="envelope-icon" onClick={togglePopup} />
-              )}
-              {isOpen && (
-                <div className="popup-content">
-                  <div className="popup-header">
-                    <button className="close-button" onClick={closePopup}>
-                      {" "}
-                      Close Form &times;
-                    </button>
-                  </div>
-                  <form className="contact-form" ref={form} onSubmit={handleSubmit}>
-                    <label htmlFor="name">Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      placeholder="Your Name"
-                      required
-                      value={name}
-                      onChange={handleInputChange}
-                    />
-                    { nameError && <p className="error">{nameError}</p> }
-
-                    <label htmlFor="email">Email</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      placeholder="Your Email"
-                      required
-                      value={email}
-                      onChange={handleInputChange}
-                    />
-                    { emailError && <p className="error">{emailError}</p> }
-
-                    <label htmlFor="message">Message</label>
-                    <textarea
-                      name="message"
-                      placeholder="write your message"
-                      id="message"
-                      required
-                      value={message}
-                      onChange={handleInputChange}
-                    />
-                    { messageError && <p className="error">{messageError}</p> }
-
-                    <div className="recapture">
-                      <ReCAPTCHA
-                        sitekey="6LfmYkUoAAAAAJfPLa7V5nbVOs5zGoD6WXivA39J"
-                        onChange={onChange}
-                      />
-                    </div>
-
-                    <button type="submit">Send</button>
-                  </form>
-                </div>
-              )}
+            
+            <div className="d-flex gap-3 mt-4">
+              <Button variant="outline-primary" onClick={handleShow}>
+                <FaEnvelope className="me-2" />
+                Email Me
+              </Button>
+              
+              <Button variant="success" onClick={openWhatsApp}>
+                <FaWhatsapp className="me-2" />
+                WhatsApp
+              </Button>
             </div>
-          </div>
-          <div className="whatsapp-button">
-            <button onClick={openWhatsApp}>
-              <FaWhatsapp />
-              Chat on WhatsApp
-            </button>
-          </div>
-          <img className ="undrawPersonal" src={undrawPersonal} alt="Personal SVG" />
-        </div>
-      </div>
+          </Col>
+
+          <Col md={6}>
+            <img src={undrawPersonal} alt="Personal SVG" className="img-fluid" />
+          </Col>
+        </Row>
+      </Container>
+
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Contact Form</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form ref={form} onSubmit={handleSubmit}>
+            <Form.Group className="mb-3">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                isInvalid={!!nameError}
+              />
+              <Form.Control.Feedback type="invalid">
+                {nameError}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                isInvalid={!!emailError}
+              />
+              <Form.Control.Feedback type="invalid">
+                {emailError}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Message</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                name="message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                isInvalid={!!messageError}
+              />
+              <Form.Control.Feedback type="invalid">
+                {messageError}
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <div className="mb-3">
+              <ReCAPTCHA
+                sitekey="6LfmYkUoAAAAAJfPLa7V5nbVOs5zGoD6WXivA39J"
+                onChange={() => {}}
+              />
+            </div>
+
+            <Button variant="primary" type="submit">
+              Send Message
+            </Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
+
+      {showAlert && (
+        <Alert variant="success" onClose={() => setShowAlert(false)} dismissible className="position-fixed bottom-0 end-0 m-3">
+          Message sent successfully!
+        </Alert>
+      )}
     </section>
   );
 };

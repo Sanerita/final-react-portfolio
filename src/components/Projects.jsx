@@ -1,167 +1,108 @@
 import React from 'react';
-import '../styles.css'
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import { FaGithub, FaPlayCircle } from 'react-icons/fa';
 import malimba from '../assets/malimba.png';
 import projectB from '../assets/projectB.png';
 import Nezzies from '../assets/Nezzies.png';
 import calculator from '../assets/calculator.png';
-import { FaGithub } from 'react-icons/fa';
-import { FaPlayCircle } from 'react-icons/fa';
-
-
 
 const Projects = () => {
+  const projects = [
+    {
+      id: 1,
+      title: "HTML&CSS Website",
+      description: "This is a transport service business website that is built with HTML5 and CSS.",
+      image: malimba,
+      githubLink: "https://github.com/Sanerita/Malimba-Website/tree/main/malimba",
+      demoLink: "#"
+    },
+    {
+      id: 2,
+      title: "React Chat-App",
+      description: "TOAST is a Full Stack Chatting App. It Uses Socket.io for real time communication and stores user details in encrypted format in Mongo DB Database.",
+      image: projectB,
+      githubLink: "https://github.com/Sanerita/Chat-application",
+      demoLink: "#"
+    },
+    {
+      id: 3,
+      title: "Finance Calculator",
+      description: "Finance Calculator is a Python program that allows users to perform financial calculations such as investment and bond calculations.",
+      image: calculator,
+      githubLink: "https://github.com/Sanerita/Financial-calculator/tree/main/FinaceCalculator",
+      demoLink: "#"
+    },
+    {
+      id: 4,
+      title: "React Business website",
+      description: "This is a local business website built with react.js and css",
+      image: Nezzies,
+      githubLink: "https://github.com/Sanerita/Business-Website",
+      demoLink: "#"
+    }
+  ];
 
   return (
-    <section id="Projects">
-      <div className="projects-page">
-        <div className="project-title">
-          <h2>PROJECTS</h2>
-        </div>
+    <section id="Projects" className="py-5">
+      <Container>
+        <Row className="justify-content-center mb-5">
+          <Col xs={12} className="text-center">
+            <h2 className="display-4">PROJECTS</h2>
+          </Col>
+        </Row>
 
-        <div className="pro">
-          <div className="projects-intro">
+        <Row className="mb-5">
+          <Col xs={12} className="text-center">
             <h2>Welcome to My Portfolio of Diverse Projects</h2>
-            <p>
+            <p className="lead">
               Explore a collection of my projects that showcase my journey in
-              Software Development. From crafting engaging
-              HTML, CSS & JavaScript websites to building dynamic React applications 
-               my portfolio reflects my dedication to continuous
-              learning and problem-solving.
+              Software Development. From crafting engaging HTML, CSS & JavaScript 
+              websites to building dynamic React applications, my portfolio reflects 
+              my dedication to continuous learning and problem-solving.
             </p>
-           <br/>
             <p>
               Click on the projects to learn more, explore the source code on
               GitHub, and experience live demos where available. If you have any
               questions, feedback, or potential collaborations in mind, please
-              feel free to get in touch. I'm excited to share my journey and
-              discuss how we can work together to create something remarkable.
+              feel free to get in touch.
             </p>
-          </div>
-        </div>
+          </Col>
+        </Row>
 
-        <div className="container">
-          <div className="box">
-            <div className="img-Box">
-              <img src={malimba} />
-            </div>
-            <div className="content">
-              <div>
-                <h2>HTML&CSS Website</h2>
-                <p>
-                  This is a transport service business website that is built
-                  with HTML5 and CSS.
-                </p>
-            
-                {/* ---------------------------------------- */}
-                <div className="side">
-                  <div className="articles">
-                    <a
-                      href="https://github.com/Sanerita/Malimba-Website/tree/main/malimba"
-                      target="_blank"
+        <Row>
+          {projects.map((project) => (
+            <Col key={project.id} md={6} lg={3} className="mb-4">
+              <Card className="h-100">
+                <Card.Img variant="top" src={project.image} />
+                <Card.Body>
+                  <Card.Title>{project.title}</Card.Title>
+                  <Card.Text>{project.description}</Card.Text>
+                </Card.Body>
+                <Card.Footer className="bg-white border-0">
+                  <div className="d-flex justify-content-between">
+                    <a 
+                      href={project.githubLink} 
+                      target="_blank" 
                       rel="noopener noreferrer"
+                      className="btn btn-outline-dark btn-sm"
                     >
-                      <button className="github-button">
-                        <FaGithub /> GitHub
-                      </button>
+                      <FaGithub className="me-1" /> GitHub
                     </a>
-                  </div>
-                  <div className="articles">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                      <button className="github-button">
-                        <FaPlayCircle /> Demo
-                      </button>
-                    </a>
-                  </div>
-                </div>
-
-                {/* ----------------------------------------- */}
-              </div>
-            </div>
-          </div>
-          <div className="box">
-            <div className="img-Box">
-              <img src={projectB} />
-            </div>
-            <div className="content">
-              <div>
-                <h2> React Chat-App</h2>
-                <p>
-                 TOAST is a Full Stack Chatting App. It Uses Socket.io for real time
-                  communication and stores user details in encrypted format in Mongo 
-                  DB Database.
-                </p>
-                <a
-                  href="https://github.com/Sanerita/Chat-application"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className="github-button">
-                    <FaGithub /> GitHub
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="box">
-            <div className="img-Box">
-              <img src={calculator} />
-            </div>
-            <div className="content">
-              <div>
-                <h2>Finance Calculator</h2>
-                <p>
-                  Finance Calculator is a Python program that allows users to
-                  perform financial calculations such as investment and bond
-                  calculations.
-                </p>
-                <a
-                  href="https://github.com/Sanerita/Financial-calculator/tree/main/FinaceCalculator"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className="github-button">
-                    <FaGithub /> GitHub
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="box">
-            <div className="img-Box">
-              <img src={Nezzies} />
-            </div>
-            <div className="content">
-              <div>
-                <h2>React Business website</h2>
-                <p>
-                  This is a local business website built with react.js and css
-                </p>
-
-                <div className="side">
-                  <div className="articles">
-                    <a
-                      href="https://github.com/Sanerita/Business-Website"
-                      target="_blank"
+                    <a 
+                      href={project.demoLink} 
+                      target="_blank" 
                       rel="noopener noreferrer"
+                      className="btn btn-outline-primary btn-sm"
                     >
-                      <button className="github-button">
-                        <FaGithub /> GitHub
-                      </button>
+                      <FaPlayCircle className="me-1" /> Demo
                     </a>
                   </div>
-                  <div className="articles">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                      <button className="github-button">
-                        <FaPlayCircle /> Demo
-                      </button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                </Card.Footer>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
     </section>
   );
 };
