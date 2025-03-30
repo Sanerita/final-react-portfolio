@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Card, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col, Card, ListGroup, Button, Badge } from 'react-bootstrap';
 import { 
   FaGitAlt, FaJava, FaNodeJs, FaReact, FaHtml5, FaCss3Alt, FaWordpressSimple 
 } from "react-icons/fa";
-import { SiFirebase } from "react-icons/si";
+import { SiFirebase, SiMongodb } from "react-icons/si";
 import { BsFiletypeSql } from "react-icons/bs";
 import { TbBrandJavascript } from "react-icons/tb";
 
@@ -18,45 +18,48 @@ const Experience = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const frontEndSkills = [
-    { icon: <FaHtml5 size={24} />, name: "HTML", level: "Experienced" },
-    { icon: <FaCss3Alt size={24} />, name: "CSS", level: "Experienced" },
-    { icon: <FaReact size={24} />, name: "React", level: "Experienced" },
-    { icon: <TbBrandJavascript size={24} />, name: "JavaScript", level: "Intermediate" },
-    { icon: <FaWordpressSimple size={24} />, name: "Wordpress", level: "Intermediate" },
+    { icon: <FaHtml5 className="skill-icon" />, name: "HTML", level: "Experienced" },
+    { icon: <FaCss3Alt className="skill-icon" />, name: "CSS", level: "Experienced" },
+    { icon: <FaReact className="skill-icon" />, name: "React", level: "Experienced" },
+    { icon: <TbBrandJavascript className="skill-icon" />, name: "JavaScript", level: "Intermediate" },
+    { icon: <FaWordpressSimple className="skill-icon" />, name: "Wordpress", level: "Intermediate" },
   ];
 
   const backEndSkills = [
-    { icon: <FaJava size={24} />, name: "Java", level: "Intermediate" },
-    { icon: <BsFiletypeSql size={24} />, name: "SQL", level: "Intermediate" },
-    { icon: <FaNodeJs size={24} />, name: "Node JS", level: "Experienced" },
-    { icon: <SiFirebase size={24} />, name: "Firebase", level: "Experienced" },
-    { icon: <FaGitAlt size={24} />, name: "Git", level: "Experienced" },
+    { icon: <FaJava className="skill-icon" />, name: "Java", level: "Intermediate" },
+    { icon: <BsFiletypeSql className="skill-icon" />, name: "SQL", level: "Intermediate" },
+    { icon: <FaNodeJs className="skill-icon" />, name: "Node JS", level: "Experienced" },
+    { icon: <SiFirebase className="skill-icon" />, name: "Firebase", level: "Experienced" },
+    { icon: <SiMongodb className="skill-icon" />, name: "MongoDB", level: "Experienced" },
   ];
 
   return (
-    <section id='experience' className="py-5 bg-light">
+    <section id='experience' className="py-5">
       <Container>
-        <Row className="justify-content-center mb-4">
+        <Row className="justify-content-center mb-5">
           <Col xs={12} className="text-center">
-            <h2 className="display-4">EXPERIENCE</h2>
+            <h2 className="display-4 fw-bold">My Experience</h2>
+            <p className="lead text-muted">Where I've worked and what I've learned</p>
+            <div className="divider mx-auto bg-primary"></div>
           </Col>
         </Row>
 
         <Row className="mb-5">
           <Col xs={12} className="text-center">
-            <Card>
-              <Card.Body>
-                <Card.Title>{internetFacts[activeIndex].year}</Card.Title>
-                <Card.Text>{internetFacts[activeIndex].fact}</Card.Text>
+            <Card className="border-0 shadow-sm">
+              <Card.Body className="py-4">
+                <Badge bg="primary" className="mb-3">Experience</Badge>
+                <Card.Title className="fs-3">{internetFacts[activeIndex].year}</Card.Title>
+                <Card.Text className="fs-5">{internetFacts[activeIndex].fact}</Card.Text>
               </Card.Body>
             </Card>
             
-            <div className="mt-3">
+            <div className="mt-4">
               {internetFacts.map((_, index) => (
                 <Button
                   key={index}
                   variant={index === activeIndex ? "primary" : "outline-primary"}
-                  className="mx-1"
+                  className="mx-2 rounded-pill"
                   onClick={() => setActiveIndex(index)}
                 >
                   {index + 1}
@@ -66,20 +69,27 @@ const Experience = () => {
           </Col>
         </Row>
 
-        <Row>
-          <Col md={6} className="mb-4 mb-md-0">
-            <Card>
-              <Card.Header className="text-center">
-                <h3>FRONT-END</h3>
+        <Row className="g-4">
+          <Col md={6}>
+            <Card className="h-100 border-0 shadow-sm">
+              <Card.Header className="bg-white border-0 py-3">
+                <h3 className="text-center mb-0">
+                  <FaReact className="text-primary me-2" />
+                  Front-End Skills
+                </h3>
               </Card.Header>
               <ListGroup variant="flush">
                 {frontEndSkills.map((skill, index) => (
-                  <ListGroup.Item key={index}>
+                  <ListGroup.Item key={index} className="py-3">
                     <div className="d-flex align-items-center">
-                      <div className="me-3">{skill.icon}</div>
+                      <div className="me-3 text-primary">
+                        {skill.icon}
+                      </div>
                       <div>
-                        <h5 className="mb-0">{skill.name}</h5>
-                        <small className="text-muted">{skill.level}</small>
+                        <h5 className="mb-1">{skill.name}</h5>
+                        <Badge bg="light" text="dark" className="fw-normal">
+                          {skill.level}
+                        </Badge>
                       </div>
                     </div>
                   </ListGroup.Item>
@@ -89,18 +99,25 @@ const Experience = () => {
           </Col>
 
           <Col md={6}>
-            <Card>
-              <Card.Header className="text-center">
-                <h3>BACK-END</h3>
+            <Card className="h-100 border-0 shadow-sm">
+              <Card.Header className="bg-white border-0 py-3">
+                <h3 className="text-center mb-0">
+                  <FaNodeJs className="text-primary me-2" />
+                  Back-End Skills
+                </h3>
               </Card.Header>
               <ListGroup variant="flush">
                 {backEndSkills.map((skill, index) => (
-                  <ListGroup.Item key={index}>
+                  <ListGroup.Item key={index} className="py-3">
                     <div className="d-flex align-items-center">
-                      <div className="me-3">{skill.icon}</div>
+                      <div className="me-3 text-primary">
+                        {skill.icon}
+                      </div>
                       <div>
-                        <h5 className="mb-0">{skill.name}</h5>
-                        <small className="text-muted">{skill.level}</small>
+                        <h5 className="mb-1">{skill.name}</h5>
+                        <Badge bg="light" text="dark" className="fw-normal">
+                          {skill.level}
+                        </Badge>
                       </div>
                     </div>
                   </ListGroup.Item>

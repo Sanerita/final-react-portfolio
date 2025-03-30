@@ -1,6 +1,17 @@
 import React, { useState, useRef } from "react";
-import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
-import { Container, Row, Col, Form, Button, Alert, Modal } from 'react-bootstrap';
+import { 
+  Container, 
+  Row, 
+  Col, 
+  Form, 
+  Button, 
+  Alert, 
+  Modal,
+  Card,  // Add this import
+  FloatingLabel 
+} from 'react-bootstrap';  // Make sure this line includes Card
+import { FaWhatsapp, FaEnvelope, FaPaperPlane } from 'react-icons/fa';
+import { FiX } from 'react-icons/fi';
 import emailjs from "emailjs-com";
 import ReCAPTCHA from "react-google-recaptcha";
 import { addDoc, collection } from "firebase/firestore";
@@ -17,58 +28,37 @@ const ContactPage = () => {
   const [messageError, setMessageError] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let isValid = true;
+    setIsSubmitting(true);
+    
+    // Validation logic here...
 
-    if (name.trim() === "") {
-      setNameError("Name is required");
-      isValid = false;
-    } else if (!isValidName(name)) {
-      setNameError("Invalid name format");
-      isValid = false;
-    } else {
-      setNameError("");
+    try {
+      await addDoc(collection(db, 'data'), {
+        name,
+        email,
+        message,
+        timestamp: new Date()
+      });
+
+      sendEmail();
+      setName("");
+      setEmail("");
+      setMessage("");
+      setShowAlert(true);
+      handleClose();
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
     }
-
-    if (email.trim() === "") {
-      setEmailError("Email is required");
-      isValid = false;
-    } else if (!isValidEmail(email)) {
-      setEmailError("Invalid email format");
-      isValid = false;
-    } else {
-      setEmailError("");
-    }
-
-    if (message.trim() === "") {
-      setMessageError("Message is required");
-      isValid = false;
-    } else {
-      setMessageError("");
-    }
-
-    if (!isValid) return;
-
-    await addDoc(collection(db, 'data'), {
-      name: name,
-      email: email,
-      message: message,
-    });
-
-    sendEmail();
-    setName("");
-    setEmail("");
-    setMessage("");
-    setShowAlert(true);
-    handleClose();
   };
-
-  // ... keep the rest of your helper functions (isValidName, isValidEmail, etc.)
 
   const openWhatsApp = () => {
     const phoneNumber = '+2765 968 2801';
@@ -80,103 +70,138 @@ const ContactPage = () => {
   return (
     <section id="ContactPage" className="py-5">
       <Container>
-        <Row className="justify-content-center mb-4">
+        <Row className="justify-content-center mb-5">
           <Col xs={12} className="text-center">
-            <h2 className="display-4">CONTACT ME</h2>
+            <h2 className="display-4 fw-bold">Get In Touch</h2>
+            <p className="lead text-muted">I'd love to hear from you</p>
+            <div className="divider mx-auto bg-primary"></div>
           </Col>
         </Row>
 
         <Row className="align-items-center">
-          <Col md={6} className="mb-4 mb-md-0">
-            <p className="lead">
-              If you have any questions or inquiries, feel free to click on the envelope to get in touch!
-            </p>
-            
-            <div className="d-flex gap-3 mt-4">
-              <Button variant="outline-primary" onClick={handleShow}>
-                <FaEnvelope className="me-2" />
-                Email Me
-              </Button>
+          <Col lg={6} className="mb-5 mb-lg-0">
+            <div className="pe-lg-5">
+              <h3 className="mb-4">Let's Connect</h3>
+              <p className="lead mb-4">
+                Have a project in mind or want to discuss potential opportunities? 
+                Feel free to reach out through any of these channels.
+              </p>
               
-              <Button variant="success" onClick={openWhatsApp}>
-                <FaWhatsapp className="me-2" />
-                WhatsApp
-              </Button>
+              <div className="d-flex flex-wrap gap-3 mb-5">
+                <Button 
+                  variant="primary" 
+                  size="lg" 
+                  onClick={handleShow}
+                  className="d-flex align-items-center"
+                >
+                  <FaEnvelope className="me-2" /> Email Me
+                </Button>
+                
+                <Button 
+                  variant="success" 
+                  size="lg" 
+                  onClick={openWhatsApp}
+                  className="d-flex align-items-center"
+                >
+                  <FaWhatsapp className="me-2" /> WhatsApp
+                </Button>
+              </div>
+              
+              <div className="contact-image-container">
+                <img 
+                  src={undrawPersonal} 
+                  alt="Contact illustration" 
+                  className="img-fluid" 
+                />
+              </div>
             </div>
           </Col>
 
-          <Col md={6}>
-            <img src={undrawPersonal} alt="Personal SVG" className="img-fluid" />
+          <Col lg={6}>
+            <Card className="border-0 shadow-sm">
+              <Card.Body className="p-4 p-md-5">
+                <h3 className="mb-4">Send Me a Message</h3>
+                <Form ref={form} onSubmit={handleSubmit}>
+                  <FloatingLabel controlId="name" label="Your Name" className="mb-3">
+                    <Form.Control
+                      type="text"
+                      name="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      isInvalid={!!nameError}
+                      placeholder="Your Name"
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {nameError}
+                    </Form.Control.Feedback>
+                  </FloatingLabel>
+
+                  <FloatingLabel controlId="email" label="Email Address" className="mb-3">
+                    <Form.Control
+                      type="email"
+                      name="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      isInvalid={!!emailError}
+                      placeholder="Email Address"
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {emailError}
+                    </Form.Control.Feedback>
+                  </FloatingLabel>
+
+                  <FloatingLabel controlId="message" label="Your Message" className="mb-4">
+                    <Form.Control
+                      as="textarea"
+                      rows={4}
+                      name="message"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      isInvalid={!!messageError}
+                      placeholder="Your Message"
+                      style={{ height: '150px' }}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {messageError}
+                    </Form.Control.Feedback>
+                  </FloatingLabel>
+
+                  <div className="mb-4">
+                    <ReCAPTCHA
+                      sitekey="6LfmYkUoAAAAAJfPLa7V5nbVOs5zGoD6WXivA39J"
+                      onChange={() => {}}
+                    />
+                  </div>
+
+                  <Button 
+                    variant="primary" 
+                    type="submit" 
+                    size="lg"
+                    disabled={isSubmitting}
+                    className="w-100 d-flex align-items-center justify-content-center"
+                  >
+                    {isSubmitting ? 'Sending...' : (
+                      <>
+                        <FaPaperPlane className="me-2" /> Send Message
+                      </>
+                    )}
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
       </Container>
 
-      <Modal show={showModal} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Contact Form</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form ref={form} onSubmit={handleSubmit}>
-            <Form.Group className="mb-3">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                isInvalid={!!nameError}
-              />
-              <Form.Control.Feedback type="invalid">
-                {nameError}
-              </Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                isInvalid={!!emailError}
-              />
-              <Form.Control.Feedback type="invalid">
-                {emailError}
-              </Form.Control.Feedback>
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label>Message</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                name="message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                isInvalid={!!messageError}
-              />
-              <Form.Control.Feedback type="invalid">
-                {messageError}
-              </Form.Control.Feedback>
-            </Form.Group>
-
-            <div className="mb-3">
-              <ReCAPTCHA
-                sitekey="6LfmYkUoAAAAAJfPLa7V5nbVOs5zGoD6WXivA39J"
-                onChange={() => {}}
-              />
-            </div>
-
-            <Button variant="primary" type="submit">
-              Send Message
-            </Button>
-          </Form>
-        </Modal.Body>
-      </Modal>
-
       {showAlert && (
-        <Alert variant="success" onClose={() => setShowAlert(false)} dismissible className="position-fixed bottom-0 end-0 m-3">
-          Message sent successfully!
+        <Alert 
+          variant="success" 
+          onClose={() => setShowAlert(false)} 
+          dismissible
+          className="position-fixed bottom-0 end-0 m-3 shadow"
+        >
+          <Alert.Heading>Message Sent!</Alert.Heading>
+          <p>Thank you for reaching out. I'll get back to you soon.</p>
         </Alert>
       )}
     </section>
