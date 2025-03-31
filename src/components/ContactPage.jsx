@@ -10,14 +10,13 @@ import {
   Card,
   FloatingLabel 
 } from 'react-bootstrap';
-import { FaWhatsapp, FaEnvelope, FaPaperPlane, FaTimes } from 'react-icons/fa';
+import { FaWhatsapp, FaEnvelope, FaPaperPlane } from 'react-icons/fa';
+import { FiX } from 'react-icons/fi';
 import emailjs from "emailjs-com";
 import ReCAPTCHA from "react-google-recaptcha";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import undrawPersonal from '../assets/undraw_personal_text_re_vqj3.svg';
-import { theme } from '../theme';
-// import './ContactPage.css'; // For animations
 
 const ContactPage = () => {
   const form = useRef();
@@ -31,6 +30,11 @@ const ContactPage = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+
+  // Color scheme
+  const lightPearlAqua = '#e0f2f2';
+  const darkPearlAqua = '#2a7f7d';
+  const textColor = '#333333';
 
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
@@ -122,18 +126,25 @@ const ContactPage = () => {
   };
 
   return (
-    <section id="ContactPage" className="py-5" style={{ backgroundColor: theme.colors.light }}>
+    <section 
+      id="ContactPage" 
+      className="py-5"
+      style={{ 
+        backgroundColor: lightPearlAqua,
+        minHeight: '100vh'
+      }}
+    >
       <Container>
         <Row className="justify-content-center mb-5">
           <Col xs={12} className="text-center">
-            <h2 className="display-4 fw-bold">Get In Touch</h2>
-            <p className="lead" style={{ color: theme.colors.textLight }}>I'd love to hear from you</p>
+            <h2 className="display-4 fw-bold" style={{ color: darkPearlAqua }}>Get In Touch</h2>
+            <p className="lead" style={{ color: textColor }}>I'd love to hear from you</p>
             <div 
               className="divider mx-auto" 
               style={{ 
                 height: '4px', 
                 width: '80px', 
-                background: theme.gradients.aquaGradient,
+                background: darkPearlAqua,
                 borderRadius: '2px'
               }}
             ></div>
@@ -143,8 +154,8 @@ const ContactPage = () => {
         <Row className="align-items-center">
           <Col lg={6} className="mb-5 mb-lg-0">
             <div className="pe-lg-5">
-              <h3 className="mb-4" style={{ color: theme.colors.primaryDark }}>Let's Connect</h3>
-              <p className="lead mb-4" style={{ color: theme.colors.text }}>
+              <h3 className="mb-4" style={{ color: darkPearlAqua }}>Let's Connect</h3>
+              <p className="lead mb-4" style={{ color: textColor }}>
                 Have a project in mind or want to discuss potential opportunities? 
                 Feel free to reach out through any of these channels.
               </p>
@@ -156,11 +167,11 @@ const ContactPage = () => {
                   onClick={handleShow}
                   className="d-flex align-items-center shadow-sm"
                   style={{
-                    backgroundColor: theme.colors.primary,
-                    borderColor: theme.colors.primary,
+                    backgroundColor: darkPearlAqua,
+                    borderColor: darkPearlAqua,
                     '&:hover': {
-                      backgroundColor: theme.colors.primaryDark,
-                      borderColor: theme.colors.primaryDark
+                      backgroundColor: '#1f5e5d',
+                      borderColor: '#1f5e5d'
                     }
                   }}
                 >
@@ -203,7 +214,7 @@ const ContactPage = () => {
                   className="position-absolute top-0 start-0 w-100 h-100"
                   style={{
                     background: isHovered 
-                      ? `linear-gradient(135deg, ${theme.colors.primary}20 0%, ${theme.colors.primaryLight}20 100%)` 
+                      ? `linear-gradient(135deg, ${darkPearlAqua}20 0%, ${darkPearlAqua}20 100%)` 
                       : 'transparent',
                     transition: 'background 0.3s ease'
                   }}
@@ -213,9 +224,9 @@ const ContactPage = () => {
           </Col>
 
           <Col lg={6}>
-            <Card className="border-0 shadow-sm animate__animated animate__fadeIn">
-              <Card.Body className="p-4 p-md-5">
-                <h3 className="mb-4" style={{ color: theme.colors.primaryDark }}>Send Me a Message</h3>
+            <Card className="border-0 shadow-sm">
+              <Card.Body className="p-4 p-md-5" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
+                <h3 className="mb-4" style={{ color: darkPearlAqua }}>Send Me a Message</h3>
                 <Form ref={form} onSubmit={handleSubmit}>
                   <FloatingLabel controlId="name" label="Your Name" className="mb-3">
                     <Form.Control
@@ -225,7 +236,7 @@ const ContactPage = () => {
                       onChange={(e) => setName(e.target.value)}
                       isInvalid={!!nameError}
                       placeholder="Your Name"
-                      style={{ borderColor: theme.colors.primaryLight }}
+                      style={{ borderColor: darkPearlAqua }}
                     />
                     <Form.Control.Feedback type="invalid">
                       {nameError}
@@ -240,7 +251,7 @@ const ContactPage = () => {
                       onChange={(e) => setEmail(e.target.value)}
                       isInvalid={!!emailError}
                       placeholder="Email Address"
-                      style={{ borderColor: theme.colors.primaryLight }}
+                      style={{ borderColor: darkPearlAqua }}
                     />
                     <Form.Control.Feedback type="invalid">
                       {emailError}
@@ -258,7 +269,7 @@ const ContactPage = () => {
                       placeholder="Your Message"
                       style={{ 
                         height: '150px',
-                        borderColor: theme.colors.primaryLight
+                        borderColor: darkPearlAqua
                       }}
                     />
                     <Form.Control.Feedback type="invalid">
@@ -280,11 +291,11 @@ const ContactPage = () => {
                     disabled={isSubmitting}
                     className="w-100 d-flex align-items-center justify-content-center shadow-sm"
                     style={{
-                      backgroundColor: theme.colors.primary,
-                      borderColor: theme.colors.primary,
+                      backgroundColor: darkPearlAqua,
+                      borderColor: darkPearlAqua,
                       '&:hover': {
-                        backgroundColor: theme.colors.primaryDark,
-                        borderColor: theme.colors.primaryDark
+                        backgroundColor: '#1f5e5d',
+                        borderColor: '#1f5e5d'
                       }
                     }}
                   >
@@ -304,14 +315,14 @@ const ContactPage = () => {
       {/* Contact Modal */}
       <Modal show={showModal} onHide={handleClose} centered>
         <Modal.Header className="border-0 position-relative">
-          <Modal.Title style={{ color: theme.colors.primaryDark }}>Send Me an Email</Modal.Title>
+          <Modal.Title style={{ color: darkPearlAqua }}>Send Me an Email</Modal.Title>
           <Button 
             variant="link" 
             onClick={handleClose} 
             className="position-absolute top-0 end-0 p-3"
-            style={{ color: theme.colors.textLight }}
+            style={{ color: textColor }}
           >
-            <FaTimes />
+            <FiX />
           </Button>
         </Modal.Header>
         <Modal.Body>
@@ -324,7 +335,7 @@ const ContactPage = () => {
                 onChange={(e) => setName(e.target.value)}
                 isInvalid={!!nameError}
                 placeholder="Your Name"
-                style={{ borderColor: theme.colors.primaryLight }}
+                style={{ borderColor: darkPearlAqua }}
               />
               <Form.Control.Feedback type="invalid">
                 {nameError}
@@ -339,7 +350,7 @@ const ContactPage = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 isInvalid={!!emailError}
                 placeholder="Email Address"
-                style={{ borderColor: theme.colors.primaryLight }}
+                style={{ borderColor: darkPearlAqua }}
               />
               <Form.Control.Feedback type="invalid">
                 {emailError}
@@ -357,7 +368,7 @@ const ContactPage = () => {
                 placeholder="Your Message"
                 style={{ 
                   height: '150px',
-                  borderColor: theme.colors.primaryLight
+                  borderColor: darkPearlAqua
                 }}
               />
               <Form.Control.Feedback type="invalid">
@@ -372,11 +383,11 @@ const ContactPage = () => {
               disabled={isSubmitting}
               className="w-100 d-flex align-items-center justify-content-center shadow-sm"
               style={{
-                backgroundColor: theme.colors.primary,
-                borderColor: theme.colors.primary,
+                backgroundColor: darkPearlAqua,
+                borderColor: darkPearlAqua,
                 '&:hover': {
-                  backgroundColor: theme.colors.primaryDark,
-                  borderColor: theme.colors.primaryDark
+                  backgroundColor: '#1f5e5d',
+                  borderColor: '#1f5e5d'
                 }
               }}
             >
@@ -395,11 +406,11 @@ const ContactPage = () => {
           variant="success" 
           onClose={() => setShowAlert(false)} 
           dismissible
-          className="position-fixed bottom-0 end-0 m-3 shadow animate__animated animate__fadeInUp"
+          className="position-fixed bottom-0 end-0 m-3 shadow"
           style={{
-            backgroundColor: theme.colors.primaryLight,
-            color: theme.colors.white,
-            borderColor: theme.colors.primary
+            backgroundColor: darkPearlAqua,
+            color: '#ffffff',
+            borderColor: darkPearlAqua
           }}
         >
           <Alert.Heading>Message Sent!</Alert.Heading>

@@ -2,9 +2,9 @@
 export const theme = {
   colors: {
     primary: "#88D8D8",       // Pearl Aqua
-    primaryLight: "#B8E6E6",  // Lighter Pearl Aqua
+    primaryLight: "#B8E6E9",  // Lighter Pearl Aqua
     primaryDark: "#5AC8C8",   // Darker Pearl Aqua
-    white: "#FFFFFF",
+    white: "#B8E6E9",
     light: "#F8F9FA",
     dark: "#212529",
     text: "#333333",

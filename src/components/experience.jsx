@@ -34,13 +34,13 @@ const Experience = () => {
   ];
 
   return (
-    <section id='experience' className="py-5">
+    <section id='experience' className="py-5" style={{ backgroundColor: '#2a7f7f', color: '#ffffff' }}>
       <Container>
         <Row className="justify-content-center mb-5">
           <Col xs={12} className="text-center">
             <h2 className="display-4 fw-bold">My Experience</h2>
-            <p className="lead text-muted">Where I've worked and what I've learned</p>
-            <div className="divider mx-auto bg-primary"></div>
+            <p className="lead" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>Where I've worked and what I've learned</p>
+            <div className="divider mx-auto" style={{ background: '#88D8D8', height: '4px', width: '80px' }}></div>
           </Col>
         </Row>
 
@@ -48,7 +48,7 @@ const Experience = () => {
           <Col xs={12} className="text-center">
             <Card className="border-0 shadow-sm">
               <Card.Body className="py-4">
-                <Badge bg="primary" className="mb-3">Experience</Badge>
+                <Badge bg="primary" className="mb-3" style={{ backgroundColor: '#88D8D8', color: '#2a7f7f' }}>Experience</Badge>
                 <Card.Title className="fs-3">{internetFacts[activeIndex].year}</Card.Title>
                 <Card.Text className="fs-5">{internetFacts[activeIndex].fact}</Card.Text>
               </Card.Body>
@@ -61,6 +61,11 @@ const Experience = () => {
                   variant={index === activeIndex ? "primary" : "outline-primary"}
                   className="mx-2 rounded-pill"
                   onClick={() => setActiveIndex(index)}
+                  style={{
+                    backgroundColor: index === activeIndex ? '#88D8D8' : 'transparent',
+                    color: index === activeIndex ? '#2a7f7f' : '#ffffff',
+                    borderColor: '#88D8D8'
+                  }}
                 >
                   {index + 1}
                 </Button>
@@ -74,7 +79,7 @@ const Experience = () => {
             <Card className="h-100 border-0 shadow-sm">
               <Card.Header className="bg-white border-0 py-3">
                 <h3 className="text-center mb-0">
-                  <FaReact className="text-primary me-2" />
+                  <FaReact className="me-2" style={{ color: '#88D8D8' }} />
                   Front-End Skills
                 </h3>
               </Card.Header>
@@ -82,7 +87,7 @@ const Experience = () => {
                 {frontEndSkills.map((skill, index) => (
                   <ListGroup.Item key={index} className="py-3">
                     <div className="d-flex align-items-center">
-                      <div className="me-3 text-primary">
+                      <div className="me-3" style={{ color: '#88D8D8' }}>
                         {skill.icon}
                       </div>
                       <div>
@@ -102,7 +107,7 @@ const Experience = () => {
             <Card className="h-100 border-0 shadow-sm">
               <Card.Header className="bg-white border-0 py-3">
                 <h3 className="text-center mb-0">
-                  <FaNodeJs className="text-primary me-2" />
+                  <FaNodeJs className="me-2" style={{ color: '#88D8D8' }} />
                   Back-End Skills
                 </h3>
               </Card.Header>
@@ -110,7 +115,7 @@ const Experience = () => {
                 {backEndSkills.map((skill, index) => (
                   <ListGroup.Item key={index} className="py-3">
                     <div className="d-flex align-items-center">
-                      <div className="me-3 text-primary">
+                      <div className="me-3" style={{ color: '#88D8D8' }}>
                         {skill.icon}
                       </div>
                       <div>

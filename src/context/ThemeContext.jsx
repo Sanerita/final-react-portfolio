@@ -13,12 +13,12 @@ const theme = {
     textLight: "#6C757D"
   },
   gradients: {
-    aquaGradient: "linear-gradient(135deg, #88D8D8 0%, #B8E6E6 100%)",
-    lightGradient: "linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%)"
+    aquaGradient: "linear-gradient(135deg,rgb(33, 124, 124) 0%,rgb(52, 149, 149) 100%)",
+    lightGradient: "linear-gradient(135deg,rgb(106, 142, 178) 0%, #FFFFFF 100%)"
   },
   shadows: {
-    soft: "0 4px 20px rgba(136, 216, 216, 0.15)",
-    medium: "0 8px 30px rgba(136, 216, 216, 0.2)"
+    soft: "0 4px 20px rgba(34, 138, 138, 0.15)",
+    medium: "0 8px 30px rgba(40, 135, 135, 0.2)"
   }
 };
 

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Navbar, Nav, Button } from 'react-bootstrap';
 import { FaBars } from 'react-icons/fa';
-import { theme } from '../theme';
 
 function NavigationBar() {
   const [expanded, setExpanded] = useState(false);
@@ -20,45 +19,112 @@ function NavigationBar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Dark pearl aqua color scheme
+  const darkPearlAqua = '#2a7f7f';  // Darker pearl aqua color
+  const lightPearlAqua = '#88D8D8'; // Lighter pearl aqua for highlights
+
   return (
     <Navbar 
       expand="lg" 
       variant="dark" 
       expanded={expanded} 
-      className={`py-3 fixed-top ${scrolled ? 'bg-white shadow-sm' : 'bg-transparent'}`}
+      className={`py-3 fixed-top ${scrolled ? 'shadow-sm' : ''}`}
       style={{
         transition: 'all 0.3s ease',
-        ...(scrolled ? {
-          '--bs-navbar-color': theme.colors.text,
-          '--bs-navbar-hover-color': theme.colors.primary,
-          '--bs-navbar-active-color': theme.colors.primaryDark
-        } : {
-          '--bs-navbar-color': theme.colors.white,
-          '--bs-navbar-hover-color': theme.colors.primaryLight,
-          '--bs-navbar-active-color': theme.colors.white
-        })
+        backgroundColor: darkPearlAqua,
+        '--bs-navbar-color': '#ffffff',
+        '--bs-navbar-hover-color': lightPearlAqua,
+        '--bs-navbar-active-color': '#ffffff'
       }}
     >
       <Container>
-        <Navbar.Brand href="#home-page" className="fw-bold" style={{ color: scrolled ? theme.colors.primary : theme.colors.white }}>
+        <Navbar.Brand 
+          href="#home-page" 
+          className="fw-bold"
+          style={{ 
+            color: '#ffffff',
+            fontSize: '1.5rem',
+            letterSpacing: '1px'
+          }}
+        >
           S | SILEKU
         </Navbar.Brand>
         
         <Navbar.Toggle 
           aria-controls="basic-navbar-nav" 
           onClick={() => setExpanded(expanded ? false : "expanded")}
-          style={{ borderColor: scrolled ? theme.colors.primary : theme.colors.white }}
+          style={{ borderColor: '#ffffff' }}
         >
-          <FaBars color={scrolled ? theme.colors.primary : theme.colors.white} />
+          <FaBars color="#ffffff" />
         </Navbar.Toggle>
         
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="#home-page" onClick={() => setExpanded(false)}>Home</Nav.Link>
-            <Nav.Link href="#about-page" onClick={() => setExpanded(false)}>About me</Nav.Link>
-            <Nav.Link href="#experience" onClick={() => setExpanded(false)}>Experience</Nav.Link>
-            <Nav.Link href="#Projects" onClick={() => setExpanded(false)}>Projects</Nav.Link>
-            <Nav.Link href="#ContactPage" onClick={() => setExpanded(false)}>Contact me</Nav.Link>
+            <Nav.Link 
+              href="#home-page" 
+              onClick={() => setExpanded(false)}
+              style={{
+                padding: '0.5rem 1rem',
+                margin: '0 0.25rem',
+                borderRadius: '4px',
+                transition: 'all 0.3s ease'
+              }}
+              className="nav-link-hover"
+            >
+              Home
+            </Nav.Link>
+            <Nav.Link 
+              href="#about-page" 
+              onClick={() => setExpanded(false)}
+              style={{
+                padding: '0.5rem 1rem',
+                margin: '0 0.25rem',
+                borderRadius: '4px',
+                transition: 'all 0.3s ease'
+              }}
+              className="nav-link-hover"
+            >
+              About me
+            </Nav.Link>
+            <Nav.Link 
+              href="#experience" 
+              onClick={() => setExpanded(false)}
+              style={{
+                padding: '0.5rem 1rem',
+                margin: '0 0.25rem',
+                borderRadius: '4px',
+                transition: 'all 0.3s ease'
+              }}
+              className="nav-link-hover"
+            >
+              Experience
+            </Nav.Link>
+            <Nav.Link 
+              href="#Projects" 
+              onClick={() => setExpanded(false)}
+              style={{
+                padding: '0.5rem 1rem',
+                margin: '0 0.25rem',
+                borderRadius: '4px',
+                transition: 'all 0.3s ease'
+              }}
+              className="nav-link-hover"
+            >
+              Projects
+            </Nav.Link>
+            <Nav.Link 
+              href="#ContactPage" 
+              onClick={() => setExpanded(false)}
+              style={{
+                padding: '0.5rem 1rem',
+                margin: '0 0.25rem',
+                borderRadius: '4px',
+                transition: 'all 0.3s ease'
+              }}
+              className="nav-link-hover"
+            >
+              Contact me
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

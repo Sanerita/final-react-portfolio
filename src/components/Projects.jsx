@@ -1,14 +1,17 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button, Badge } from 'react-bootstrap';
 import { FaGithub, FaPlayCircle } from 'react-icons/fa';
-import { theme } from '../theme';
 import malimba from '../assets/malimba.png';
 import projectB from '../assets/projectB.png';
 import Nezzies from '../assets/Nezzies.png';
 import calculator from '../assets/calculator.png';
-// import './Projects.css'; // Create this for animations
 
 const Projects = () => {
+  // Color scheme
+  const lightPearlAqua = '#e0f2f2';
+  const darkPearlAqua = '#2a7f7d';
+  const textColor = '#333333';
+
   const projects = [
     {
       id: 1,
@@ -49,18 +52,25 @@ const Projects = () => {
   ];
 
   return (
-    <section id="Projects" className="py-5 bg-white">
+    <section 
+      id="Projects" 
+      className="py-5"
+      style={{ 
+        backgroundColor: lightPearlAqua,
+        minHeight: '100vh'
+      }}
+    >
       <Container>
         <Row className="justify-content-center mb-5">
           <Col xs={12} className="text-center">
-            <h2 className="display-4 fw-bold">My Projects</h2>
-            <p className="lead" style={{ color: theme.colors.textLight }}>A collection of my recent work</p>
+            <h2 className="display-4 fw-bold" style={{ color: darkPearlAqua }}>My Projects</h2>
+            <p className="lead" style={{ color: textColor }}>A collection of my recent work</p>
             <div 
               className="divider mx-auto" 
               style={{ 
                 height: '4px', 
                 width: '80px', 
-                background: theme.gradients.aquaGradient,
+                background: darkPearlAqua,
                 borderRadius: '2px'
               }}
             ></div>
@@ -70,10 +80,9 @@ const Projects = () => {
         <Row className="g-4">
           {projects.map((project) => (
             <Col key={project.id} lg={6}>
-              <Card className="h-100 border-0 shadow-sm project-card">
+              <Card className="h-100 border-0 shadow-sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
                 <Row className="g-0">
-                  <Col md={5} className="overflow-hidden position-relative">
-                    <div className="project-image-overlay"></div>
+                  <Col md={5} className="overflow-hidden">
                     <Card.Img 
                       src={project.image} 
                       alt={project.title}
@@ -81,25 +90,18 @@ const Projects = () => {
                     />
                   </Col>
                   <Col md={7}>
-                    <Card.Body className="d-flex flex-column h-100 p-4">
+                    <Card.Body className="d-flex flex-column h-100">
                       <div>
-                        <Card.Title className="fw-bold" style={{ color: theme.colors.primaryDark }}>
-                          {project.title}
-                        </Card.Title>
-                        <Card.Text style={{ color: theme.colors.textLight }}>
-                          {project.description}
-                        </Card.Text>
+                        <Card.Title className="fw-bold" style={{ color: darkPearlAqua }}>{project.title}</Card.Title>
+                        <Card.Text style={{ color: textColor }}>{project.description}</Card.Text>
                         <div className="mb-3">
                           {project.tags.map((tag, index) => (
                             <Badge 
                               key={index} 
-                              className="me-2" 
-                              style={{ 
-                                backgroundColor: theme.colors.primaryLight,
-                                color: theme.colors.white,
-                                fontWeight: 'normal',
-                                padding: '0.35rem 0.75rem'
-                              }}
+                              bg="light" 
+                              text="dark" 
+                              className="me-2"
+                              style={{ backgroundColor: '#f8f9fa' }}
                             >
                               {tag}
                             </Badge>
@@ -110,15 +112,15 @@ const Projects = () => {
                         <Button 
                           href={project.githubLink} 
                           target="_blank" 
-                          variant="outline-primary" 
+                          variant="outline-dark" 
                           size="sm"
                           className="d-flex align-items-center"
                           style={{
-                            color: theme.colors.primary,
-                            borderColor: theme.colors.primary,
+                            color: darkPearlAqua,
+                            borderColor: darkPearlAqua,
                             '&:hover': {
-                              backgroundColor: theme.colors.primary,
-                              color: theme.colors.white
+                              backgroundColor: darkPearlAqua,
+                              color: '#ffffff'
                             }
                           }}
                         >
@@ -131,11 +133,11 @@ const Projects = () => {
                           size="sm"
                           className="d-flex align-items-center"
                           style={{
-                            backgroundColor: theme.colors.primary,
-                            borderColor: theme.colors.primary,
+                            backgroundColor: darkPearlAqua,
+                            borderColor: darkPearlAqua,
                             '&:hover': {
-                              backgroundColor: theme.colors.primaryDark,
-                              borderColor: theme.colors.primaryDark
+                              backgroundColor: '#1f5e5d',
+                              borderColor: '#1f5e5d'
                             }
                           }}
                         >
