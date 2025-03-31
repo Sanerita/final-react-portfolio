@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button, Badge } from 'react-bootstrap';
 import { FaGithub, FaPlayCircle } from 'react-icons/fa';
-import malimba from '../assets/malimba.png';
+import mbk from '../assets/mbk.png';
 import projectB from '../assets/projectB.png';
 import Nezzies from '../assets/Nezzies.png';
-import calculator from '../assets/calculator.png';
+import elpeap from '../assets/elpeap.png';
 
 const Projects = () => {
   // Color scheme
@@ -15,11 +15,11 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Malimba Transport Website",
-      description: "A responsive transport service business website built with HTML5 and CSS.",
-      image: malimba,
-      tags: ["HTML", "CSS", "JavaScript"],
-      githubLink: "https://github.com/Sanerita/Malimba-Website/tree/main/malimba",
+      title: "MBK BUILDERS ",
+      description: "A responsive construction business website built with Javascript.",
+      image: mbk,
+      tags: ["React", "CSS", "JavaScript", "Node.js"],
+      githubLink: "https://github.com/Sanerita/MBK-BUILDERS",
       demoLink: "#"
     },
     {
@@ -33,11 +33,11 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: "Finance Calculator",
-      description: "Python program for financial calculations including investment and bond calculations.",
-      image: calculator,
-      tags: ["Python", "Finance"],
-      githubLink: "https://github.com/Sanerita/Financial-calculator/tree/main/FinaceCalculator",
+      title: "Business Website",
+      description: "A Technology business website for bookings and showcasing business services.",
+      image: elpeap,
+      tags: ["Javascript", "React", "CSS", "Responsive Design", "Node.js"],
+      githubLink: "https://github.com/Sanerita/Elpeap-Group-",
       demoLink: "#"
     },
     {

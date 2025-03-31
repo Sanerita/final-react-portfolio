@@ -59,19 +59,34 @@ const AboutPage = () => {
           
           <Col lg={7}>
             <div className="ps-lg-5">
-              <h3 className="mb-4" style={{ color: darkPearlAqua }}>Full Stack Developer</h3>
-              <p className="lead" style={{ color: textColor }}>
-                Thank you for visiting my portfolio! I'm delighted to have you here,
-                and I'd like to take this chance to introduce myself as a software
-                developer.
-              </p>
-              <p style={{ color: secondaryText }}>
-                My passion lies in crafting innovative and efficient software solutions. 
-                I am experienced in developing web applications and am currently
-                expanding my skills to include mobile application development. My goal is to
-                consistently deliver code of the highest quality, meeting both
-                functional and aesthetic requirements.
-              </p>
+              <h3 className="mb-4" style={{ color: darkPearlAqua }}>
+                Technical Specialist & Full Stack Developer
+                <br />
+                <span style={{ fontSize: '1.2rem', color: secondaryText }}>Elpeap Group</span>
+              </h3>
+              
+              <div style={{ color: textColor }}>
+                <p className="lead mb-4">
+                  Thank you for visiting my professional portfolio. I specialize in delivering comprehensive 
+                  technical solutions that bridge innovation with practical business applications.
+                </p>
+                
+                <p className="mb-3">
+                  At <strong>Elpeap Group</strong>, I combine my full-stack expertise with technical leadership to:
+                </p>
+                
+                <ul style={{ listStyleType: 'none', paddingLeft: '0' }}>
+                  <li className="mb-2">• Architect scalable web and technical solutions</li>
+                  <li className="mb-2">• Implement cutting-edge technologies with robust code quality</li>
+                  <li className="mb-2">• Translate complex requirements into intuitive user experiences</li>
+                  
+                </ul>
+                
+                <p>
+                  My approach blends technical precision with creative problem-solving, ensuring solutions 
+                  that not only meet specifications but elevate operational capabilities.
+                </p>
+              </div>
               
               <div className="d-flex flex-wrap gap-3 mt-4">
                 <Button 
@@ -84,10 +99,6 @@ const AboutPage = () => {
                     borderColor: darkPearlAqua,
                     color: '#ffffff',
                     fontWeight: '600',
-                    '&:hover': {
-                      backgroundColor: '#1f5e5d',
-                      borderColor: '#1f5e5d'
-                    }
                   }}
                 >
                   <FaDownload className="me-2" /> Download CV
@@ -102,13 +113,9 @@ const AboutPage = () => {
                     borderColor: darkPearlAqua,
                     fontWeight: '600',
                     backgroundColor: 'transparent',
-                    '&:hover': {
-                      backgroundColor: darkPearlAqua,
-                      color: '#ffffff'
-                    }
                   }}
                 >
-                  Get In Touch
+                  Discuss A Project
                 </Button>
               </div>
             </div>

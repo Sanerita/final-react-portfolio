@@ -11,6 +11,7 @@ const Experience = () => {
   const [internetFacts] = useState([
     { year: "2019 - 2020", fact: "Air Traffic and Navigation Services" },
     { year: "2020 - 2021", fact: "Astrofica Technologies" },
+    { year: "2021 - 2023", fact: "Self-employed" },
     { year: "2023/02 - 2023/07", fact: "UVU Africa (CapaCiTi)" },
     { year: "2023/07 - current", fact: "Younglings VA" },
   ]);
