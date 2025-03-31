@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, ListGroup, Button, Badge } from 'react-bootstrap';
 import { 
-  FaGitAlt, FaJava, FaNodeJs, FaReact, FaHtml5, FaCss3Alt, FaWordpressSimple 
+  FaGitAlt, FaNodeJs, FaReact, FaHtml5, FaCss3Alt, FaWordpressSimple,
+  FaDocker, FaLinux, FaJenkins
 } from "react-icons/fa";
-import { SiFirebase, SiMongodb } from "react-icons/si";
+import { 
+  SiFirebase, SiMongodb, SiKubernetes, SiTerraform, SiAnsible,
+  SiPrometheus, SiGrafana, SiPostgresql, SiRedis
+} from "react-icons/si";
 import { BsFiletypeSql } from "react-icons/bs";
 import { TbBrandJavascript } from "react-icons/tb";
 
@@ -13,7 +17,8 @@ const Experience = () => {
     { year: "2020 - 2021", fact: "Astrofica Technologies" },
     { year: "2021 - 2023", fact: "Self-employed" },
     { year: "2023/02 - 2023/07", fact: "UVU Africa (CapaCiTi)" },
-    { year: "2023/07 - current", fact: "Younglings VA" },
+    { year: "2023/07 - 2024/07", fact: "Younglings VA" },
+    { year: "2025 - current", fact: "Elpeap Group" },
   ]);
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -27,11 +32,23 @@ const Experience = () => {
   ];
 
   const backEndSkills = [
-    { icon: <FaJava className="skill-icon" />, name: "Java", level: "Intermediate" },
     { icon: <BsFiletypeSql className="skill-icon" />, name: "SQL", level: "Intermediate" },
     { icon: <FaNodeJs className="skill-icon" />, name: "Node JS", level: "Experienced" },
     { icon: <SiFirebase className="skill-icon" />, name: "Firebase", level: "Experienced" },
     { icon: <SiMongodb className="skill-icon" />, name: "MongoDB", level: "Experienced" },
+  ];
+
+  const specialistTools = [
+    { icon: <FaDocker className="skill-icon" />, name: "Docker", level: "Experienced" },
+    { icon: <SiKubernetes className="skill-icon" />, name: "Kubernetes", level: "Intermediate" },
+    { icon: <SiTerraform className="skill-icon" />, name: "Terraform", level: "Intermediate" },
+    { icon: <SiAnsible className="skill-icon" />, name: "Ansible", level: "Basic" },
+    { icon: <FaLinux className="skill-icon" />, name: "Linux", level: "Experienced" },
+    { icon: <SiPrometheus className="skill-icon" />, name: "Prometheus", level: "Intermediate" },
+    { icon: <SiGrafana className="skill-icon" />, name: "Grafana", level: "Intermediate" },
+    { icon: <SiPostgresql className="skill-icon" />, name: "PostgreSQL", level: "Experienced" },
+    { icon: <SiRedis className="skill-icon" />, name: "Redis", level: "Intermediate" },
+    { icon: <FaJenkins className="skill-icon" />, name: "Jenkins", level: "Basic" },
   ];
 
   return (
@@ -75,7 +92,7 @@ const Experience = () => {
           </Col>
         </Row>
 
-        <Row className="g-4">
+        <Row className="g-4 mb-4">
           <Col md={6}>
             <Card className="h-100 border-0 shadow-sm">
               <Card.Header className="bg-white border-0 py-3">
@@ -129,6 +146,37 @@ const Experience = () => {
                   </ListGroup.Item>
                 ))}
               </ListGroup>
+            </Card>
+          </Col>
+        </Row>
+
+        {/* New Technical Specialist Tools Section */}
+        <Row>
+          <Col xs={12}>
+            <Card className="border-0 shadow-sm">
+              <Card.Header className="bg-white border-0 py-3">
+                <h3 className="text-center mb-0">
+                  <FaDocker className="me-2" style={{ color: '#88D8D8' }} />
+                  Technical Specialist Tools
+                </h3>
+              </Card.Header>
+              <Card.Body>
+                <div className="d-flex flex-wrap justify-content-center gap-4">
+                  {specialistTools.map((tool, index) => (
+                    <div key={index} className="d-flex align-items-center p-3" style={{ width: '220px' }}>
+                      <div className="me-3" style={{ color: '#88D8D8', fontSize: '1.5rem' }}>
+                        {tool.icon}
+                      </div>
+                      <div>
+                        <h5 className="mb-1">{tool.name}</h5>
+                        <Badge bg="light" text="dark" className="fw-normal">
+                          {tool.level}
+                        </Badge>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card.Body>
             </Card>
           </Col>
         </Row>

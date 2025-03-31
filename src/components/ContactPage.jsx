@@ -119,7 +119,7 @@ const ContactPage = () => {
   };
 
   const openWhatsApp = () => {
-    const phoneNumber = '+2765 968 2801';
+    const phoneNumber = '+2778 140 7743';
     const message = 'Hello, Let\'s get in touch!';
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');

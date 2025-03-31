@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { FaDownload } from 'react-icons/fa';
+import UntitledDesign from '../assets/UntitledDesign.png';
+import cvPDF from '../assets/SILEKU-CV cpt.pdf'; // Import your CV file
 
 const AboutPage = () => {
   // Color scheme
@@ -37,17 +39,17 @@ const AboutPage = () => {
         </Row>
         
         <Row className="align-items-center">
-          <Col lg={5} className="mb-5 mb-lg-0">
-            <div 
-              className="about-image rounded-circle overflow-hidden shadow-lg mx-auto"
-              style={{
-                width: '350px',
-                height: '350px',
-                border: `8px solid ${darkPearlAqua}`,
-                background: 'url(https://via.placeholder.com/350) center/cover',
-                position: 'relative'
-              }}
-            >
+        <Col lg={5} className="mb-5 mb-lg-0">
+          <div 
+            className="about-image rounded-circle overflow-hidden shadow-lg mx-auto"
+            style={{
+              width: '350px',
+              height: '350px',
+              border: `8px solid ${darkPearlAqua}`,
+              background: `url(${UntitledDesign}) center/cover no-repeat`,
+              position: 'relative'
+            }}
+          >
               <div 
                 className="position-absolute top-0 start-0 w-100 h-100"
                 style={{
@@ -89,20 +91,24 @@ const AboutPage = () => {
               </div>
               
               <div className="d-flex flex-wrap gap-3 mt-4">
-                <Button 
-                  variant="primary" 
-                  size="lg"
-                  onClick={() => window.open("https://drive.google.com/file/d/1AcbRqagEk64yib8WW91UKjZr4yStgn6n/view?usp=sharing")}
-                  className="d-flex align-items-center shadow-sm"
-                  style={{
-                    backgroundColor: darkPearlAqua,
-                    borderColor: darkPearlAqua,
-                    color: '#ffffff',
-                    fontWeight: '600',
-                  }}
-                >
-                  <FaDownload className="me-2" /> Download CV
-                </Button>
+              <Button 
+          as="a"
+          href={cvPDF}
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="primary" 
+          size="lg"
+          className="d-flex align-items-center shadow-sm"
+          style={{
+            backgroundColor: darkPearlAqua,
+            borderColor: darkPearlAqua,
+            color: '#ffffff',
+            fontWeight: '600',
+          }}
+          download="SILEKU-CV cpt.pdf" // Optional: forces download with this filename
+        >
+          <FaDownload className="me-2" /> Download CV
+        </Button>
                 <Button 
                   href="#ContactPage" 
                   variant="outline-primary" 
