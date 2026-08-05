@@ -1,104 +1,64 @@
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes beat {
-  0% { transform: scale(1); }
-  25% { transform: scale(1.1); }
-  40% { transform: scale(1); }
-  60% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-/* Hover effects */
-.hover-scale:hover {
-  transform: scale(1.2);
-  color: var(--primary-light) !important;
-}
-
-.beat {
-  animation: beat 1.5s infinite;
-}
-
-/* Project card hover effect */
-.project-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(136, 216, 216, 0.3) !important;
-}
-
-.project-image-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(136, 216, 216, 0.1), rgba(136, 216, 216, 0.3));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.project-card:hover .project-image-overlay {
-  opacity: 1;
-}
-
-/* Animate on scroll */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* src/styles.css */
+/* Custom Root Variables matching Sanelisiwe's Pearl Aqua Color Palette */
 :root {
   --primary: #88D8D8;
-  --primary-light: #B8E6E6;
-  --primary-dark: #5AC8C8;
+  --primary-light: #B8E6E9;
+  --primary-dark: #2a7f7d;
+  --primary-hover: #1f5e5d;
+  --light-aqua: #e0f2f2;
+  --dark-navy: #0f172a;
+  --slate-dark: #1e293b;
   --white: #FFFFFF;
   --light: #F8F9FA;
-  --dark: #212529;
-  --text: #333333;
-  --text-light: #6C757D;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(136, 216, 216, 0.3);
 }
 
-/* Custom scrollbar */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--text-dark);
+  background-color: var(--light-aqua);
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--light);
+  background: #d8ecec;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 4px;
+  background: var(--primary-dark);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark);
+  background: var(--primary-hover);
 }
 
-/* Animation classes */
-.hover-scale {
-  transition: transform 0.3s ease;
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.hover-scale:hover {
-  transform: scale(1.1);
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
 }
 
-.beat {
-  animation: beat 1.5s infinite;
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(136, 216, 216, 0.4); }
+  50% { box-shadow: 0 0 30px rgba(136, 216, 216, 0.8); }
 }
 
 @keyframes beat {
@@ -109,53 +69,180 @@
   100% { transform: scale(1); }
 }
 
-/* Bootstrap overrides */
-.btn-primary {
-  background-color: var(--primary);
-  border-color: var(--primary);
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.btn-primary:hover {
-  background-color: var(--primary-dark);
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.beat {
+  animation: beat 1.5s infinite;
+  display: inline-block;
+}
+
+/* Glassmorphism Cards & Containers */
+.glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(136, 216, 216, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px -10px rgba(42, 127, 125, 0.12);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(42, 127, 125, 0.22);
   border-color: var(--primary-dark);
 }
 
-.nav-link.active {
-  color: var(--primary) !important;
-  font-weight: 500;
-}
-/* Navbar hover effects */
-.nav-link-hover:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
+.glass-card-dark {
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(136, 216, 216, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Active nav link style */
-.navbar-dark .navbar-nav .nav-link.active {
-  color: var(--light-pearl-aqua) !important;
-  font-weight: 500;
+.glass-card-dark:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px rgba(136, 216, 216, 0.25);
+  border-color: var(--primary);
+}
+
+/* Interactive Hover Utilities */
+.hover-scale {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.15);
+  color: var(--primary) !important;
+}
+
+/* Project Card Effects */
+.project-card {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(42, 127, 125, 0.25) !important;
+}
+
+.project-card .card-img-wrapper {
+  overflow: hidden;
   position: relative;
 }
 
-.navbar-dark .navbar-nav .nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 2px;
-  background-color: var(--light-pearl-aqua);
+.project-card .card-img-wrapper img {
+  transition: transform 0.5s ease;
 }
 
-/* Mobile menu adjustments */
-@media (max-width: 991.98px) {
-  .navbar-collapse {
-    padding-top: 1rem;
+.project-card:hover .card-img-wrapper img {
+  transform: scale(1.06);
+}
+
+/* Badge styling */
+.badge-aqua {
+  background-color: rgba(42, 127, 125, 0.12);
+  color: var(--primary-dark);
+  border: 1px solid rgba(42, 127, 125, 0.25);
+  padding: 0.35rem 0.75rem;
+  font-weight: 600;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  letter-spacing: 0.3px;
+}
+
+.badge-aqua-light {
+  background-color: rgba(136, 216, 216, 0.2);
+  color: #0f172a;
+  border: 1px solid rgba(136, 216, 216, 0.5);
+  padding: 0.35rem 0.75rem;
+  font-weight: 600;
+  border-radius: 20px;
+  font-size: 0.78rem;
+}
+
+/* Navbar Styles */
+.navbar-custom {
+  transition: all 0.4s ease;
+}
+
+.nav-link-hover {
+  position: relative;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.nav-link-hover:hover::after,
+.nav-link-hover.active::after {
+  width: 60%;
+}
+
+/* Custom Dividers */
+.section-divider {
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 100%);
+  border-radius: 4px;
+  margin: 1rem auto;
+}
+
+/* Form floating labels enhancement */
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+.form-control:focus {
+  border-color: var(--primary-dark) !important;
+  box-shadow: 0 0 0 0.25rem rgba(42, 127, 125, 0.2) !important;
+}
+
+/* Profile Picture Glow Ring */
+.profile-img-glow {
+  position: relative;
+}
+
+.profile-img-glow::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  z-index: -1;
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+/* Mobile responsive padding helpers */
+@media (max-width: 768px) {
+  .display-3 {
+    font-size: 2.5rem;
   }
-  
-  .nav-link {
-    margin: 0.25rem 0 !important;
-    padding: 0.75rem !important;
+  .display-4 {
+    font-size: 2.1rem;
   }
 }
