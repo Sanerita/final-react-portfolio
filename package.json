@@ -30,8 +30,7 @@
     "react-icons": "^5.7.0",
     "react-intersection-observer": "^11.0.0",
     "react-router-dom": "^7.18.2",
-    "react-slideshow-image": "^4.4.0",
-    "vite": "^6.2.3"
+    "react-slideshow-image": "^4.4.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
