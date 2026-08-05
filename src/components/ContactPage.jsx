@@ -135,7 +135,7 @@ const ContactPage = () => {
     }
 
     try {
-      sendEmail();
+      await sendEmail();
       setLastSubmitTime(Date.now());
       setName("");
       setEmail("");
@@ -144,19 +144,51 @@ const ContactPage = () => {
       if (showModal) handleClose();
     } catch (error) {
       console.error("Error submitting form:", error);
+      // Fallback: trigger direct mailto link to sanelisiwe.sileku@gmail.com
+      const mailtoUrl = `mailto:sanelisiwe.sileku@gmail.com?subject=${encodeURIComponent(`Portfolio Inquiry from ${name}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+      window.location.href = mailtoUrl;
+      setShowAlert(true);
+      if (showModal) handleClose();
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const sendEmail = () => {
-    // Sanitized values are safely packaged
-    emailjs.sendForm(
-      'your_service_id', 
-      'your_template_id', 
-      form.current, 
-      'your_user_id'
-    ).catch(() => {});
+  const sendEmail = async () => {
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (serviceId && templateId && publicKey) {
+      return emailjs.sendForm(
+        serviceId, 
+        templateId, 
+        form.current, 
+        publicKey
+      );
+    } else {
+      // Direct FormSubmit endpoint configured for sanelisiwe.sileku@gmail.com
+      const response = await fetch("https://formsubmit.co/ajax/sanelisiwe.sileku@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message,
+          _subject: `New Portfolio Message from ${name}`,
+          _replyto: email,
+          _template: "table"
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message via email endpoint");
+      }
+      return response.json();
+    }
   };
 
   const openWhatsApp = () => {
