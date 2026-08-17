@@ -1,4 +1,5 @@
 import React from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import NavigationBar from './components/NavigationBar';
 import HomePage from './components/HomePage';
 import './styles.css';
@@ -22,6 +23,7 @@ const App = () => {
         <Projects />    
         <ContactPage /> 
         <Footer />
+        <Analytics />
       </div>
     </ErrorBoundary>
   );
