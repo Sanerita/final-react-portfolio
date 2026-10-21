@@ -2,23 +2,60 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaArrowRight, FaArrowDown } from 'react-icons/fa';
 import { theme } from '../theme';
+import backgroundHome from '../assets/backgroundHome.jpg';
 
 const HomePage = () => {
   const stack = ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Microsoft 365', 'ServiceNow'];
 
-  const metrics = [
-    { value: '5+', label: 'Years experience' },
-    { value: '50+', label: 'Clients supported' },
-    { value: '4', label: 'Production apps' },
-  ];
+  // const metrics = [
+  //   { value: '5+', label: 'Years experience' },
+  //   { value: '50+', label: 'Clients supported' },
+  //   { value: '4', label: 'Production apps' },
+  // ];
 
   return (
     <section
       id="home-page"
       className="d-flex align-items-center position-relative overflow-hidden"
-      style={{ minHeight: '100vh', paddingTop: '120px', paddingBottom: '80px', background: theme.colors.bg }}
+      style={{
+        minHeight: '100vh',
+        paddingTop: '120px',
+        paddingBottom: '80px',
+        background: theme.colors.bg,
+        isolation: 'isolate',
+      }}
     >
-      {/* ambient glow */}
+      {/* Background picture — transparent, muted, behind overlay */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: `url(${backgroundHome})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.18,           // transparency — tune between 0.12 and 0.25
+          filter: 'grayscale(60%)',
+          zIndex: -2,
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Dark gradient overlay so text stays readable */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'linear-gradient(135deg, rgba(8,9,10,0.92) 0%, rgba(8,9,10,0.75) 55%, rgba(8,9,10,0.95) 100%)',
+          zIndex: -1,
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* ambient accent glow */}
       <div
         className="position-absolute rounded-circle pointer-events-none"
         style={{
@@ -29,6 +66,7 @@ const HomePage = () => {
           opacity: 0.08,
           top: '-15%',
           right: '-15%',
+          zIndex: 0,
         }}
       />
 
@@ -36,10 +74,15 @@ const HomePage = () => {
         <Row>
           <Col lg={10} xl={9}>
             {/* status pill */}
-            <div className="mb-6 d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill"
-                 style={{ border: `1px solid ${theme.colors.border}`, background: theme.colors.surface }}>
+            <div
+              className="mb-4 d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill"
+              style={{ border: `1px solid ${theme.colors.border}`, background: 'rgba(17,18,20,0.7)', backdropFilter: 'blur(8px)' }}
+            >
               <span className="status-dot" />
-              <span className="font-mono" style={{ fontSize: '0.72rem', color: theme.colors.textMuted, letterSpacing: '0.05em' }}>
+              <span
+                className="font-mono"
+                style={{ fontSize: '0.72rem', color: theme.colors.textMuted, letterSpacing: '0.05em' }}
+              >
                 Available for work
               </span>
             </div>
@@ -68,12 +111,16 @@ const HomePage = () => {
               className="mb-5"
               style={{ color: theme.colors.textMuted, fontSize: '1.05rem', lineHeight: 1.7, maxWidth: '640px' }}
             >
-              I'm Sanelisiwe Sileku — I engineer modern interfaces, scalable backends, and deliver production-grade IT support across Microsoft 365, ServiceNow, and MERN stack applications.
+              I'm Sanelisiwe Sileku — I engineer modern interfaces, scalable backends, and deliver
+              production-grade IT support across Microsoft 365, ServiceNow, and MERN stack applications.
             </p>
 
             {/* CTAs */}
             <div className="d-flex flex-wrap gap-3 mb-5">
-              <a href="#Projects" className="btn-accent d-inline-flex align-items-center gap-2 text-decoration-none">
+              <a
+                href="#Projects"
+                className="btn-accent d-inline-flex align-items-center gap-2 text-decoration-none"
+              >
                 View projects <FaArrowRight size={12} />
               </a>
               <a href="#ContactPage" className="btn-ghost text-decoration-none">
@@ -82,28 +129,43 @@ const HomePage = () => {
             </div>
 
             {/* stack line */}
-            <div className="d-flex flex-wrap gap-3 mb-5 font-mono" style={{ fontSize: '0.75rem', color: theme.colors.textDim }}>
+            <div
+              className="d-flex flex-wrap gap-3 mb-5 font-mono"
+              style={{ fontSize: '0.75rem', color: theme.colors.textDim }}
+            >
               {stack.map((s, i) => (
                 <span key={i}>
                   {s}
-                  {i < stack.length - 1 && <span style={{ marginLeft: '0.75rem', opacity: 0.4 }}>/</span>}
+                  {i < stack.length - 1 && (
+                    <span style={{ marginLeft: '0.75rem', opacity: 0.4 }}>/</span>
+                  )}
                 </span>
               ))}
             </div>
 
             {/* metrics */}
-            <Row className="g-4 pt-4" style={{ borderTop: `1px solid ${theme.colors.border}` }}>
+            {/* <Row className="g-4 pt-4" style={{ borderTop: `1px solid ${theme.colors.border}` }}>
               {metrics.map((m, i) => (
                 <Col xs={6} md={3} key={i}>
-                  <div style={{ fontSize: '1.75rem', fontWeight: 500, color: '#fff', letterSpacing: '-0.02em' }}>
+                  <div
+                    style={{
+                      fontSize: '1.75rem',
+                      fontWeight: 500,
+                      color: '#fff',
+                      letterSpacing: '-0.02em',
+                    }}
+                  >
                     {m.value}
                   </div>
-                  <div className="font-mono" style={{ fontSize: '0.72rem', color: theme.colors.textMuted, letterSpacing: '0.05em' }}>
+                  <div
+                    className="font-mono"
+                    style={{ fontSize: '0.72rem', color: theme.colors.textMuted, letterSpacing: '0.05em' }}
+                  >
                     {m.label}
                   </div>
                 </Col>
               ))}
-            </Row>
+            </Row> */}
           </Col>
         </Row>
       </Container>
@@ -112,9 +174,12 @@ const HomePage = () => {
       <a
         href="#about-page"
         className="position-absolute bottom-0 start-50 translate-middle-x mb-4 text-decoration-none d-flex flex-column align-items-center gap-1"
-        style={{ opacity: 0.7 }}
+        style={{ opacity: 0.7, zIndex: 1 }}
       >
-        <span className="font-mono" style={{ fontSize: '0.65rem', color: theme.colors.textDim, letterSpacing: '0.15em' }}>
+        <span
+          className="font-mono"
+          style={{ fontSize: '0.65rem', color: theme.colors.textDim, letterSpacing: '0.15em' }}
+        >
           SCROLL
         </span>
         <FaArrowDown size={12} color={theme.colors.primary} className="beat" />
