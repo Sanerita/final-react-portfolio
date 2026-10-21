@@ -1,0 +1,437 @@
+/* ============================================
+   DESIGN TOKENS — Quiet Tech (Linear/Vercel)
+   ============================================ */
+:root {
+  --bg: #08090A;
+  --surface: #111214;
+  --surface-2: #16171C;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  --accent: #5E6AD2;
+  --accent-hover: #6E78DA;
+  --accent-dim: rgba(94, 106, 210, 0.12);
+
+  --text: #E6E6E6;
+  --text-muted: #8A8F98;
+  --text-dim: #5A5F68;
+
+  --font-sans: Geist, Inter, system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+  --radius-card: 12px;
+  --radius-btn: 6px;
+
+  --ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Legacy aliases */
+  --primary: var(--accent);
+  --primary-dark: var(--accent);
+  --primary-hover: var(--accent-hover);
+  --light-aqua: var(--bg);
+  --dark-navy: var(--bg);
+  --glass-bg: rgba(17, 18, 20, 0.7);
+  --glass-border: var(--border);
+}
+
+/* ============================================
+   BASE
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(94, 106, 210, 0.35);
+  color: #fff;
+}
+
+/* Typography utility */
+.font-mono {
+  font-family: var(--font-mono) !important;
+}
+.font-sans {
+  font-family: var(--font-sans) !important;
+}
+.tracking-tight {
+  letter-spacing: -0.02em;
+}
+.tracking-wider {
+  letter-spacing: 0.08em;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2c33;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
+}
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.08); }
+  50% { transform: scale(1); }
+}
+
+.animate-fade-in { animation: fadeIn 0.7s var(--ease-snap) forwards; }
+.animate-float { animation: float 4s ease-in-out infinite; }
+.beat { animation: beat 1.5s infinite; display: inline-block; }
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34d399;
+  animation: pulseDot 2s infinite;
+}
+
+/* ============================================
+   CARDS — hairline borders, minimal shadow
+   ============================================ */
+.glass-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  transition: border-color 0.25s var(--ease-snap), background 0.25s var(--ease-snap);
+}
+.glass-card:hover {
+  border-color: var(--border-strong);
+}
+
+.glass-card-dark {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  transition: border-color 0.25s var(--ease-snap);
+}
+.glass-card-dark:hover {
+  border-color: var(--border-strong);
+}
+
+/* ============================================
+   PROJECT CARDS — bento + spotlight
+   ============================================ */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: border-color 0.3s var(--ease-snap);
+}
+.project-card:hover {
+  border-color: var(--border-strong);
+}
+
+.project-card .card-img-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+.project-card .card-img-wrapper img {
+  transition: transform 0.6s var(--ease-snap);
+}
+.project-card:hover .card-img-wrapper img {
+  transform: scale(1.04);
+}
+
+/* Spotlight overlay — subtle, only on hover */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(94, 106, 210, 0.10),
+    transparent 60%
+  );
+}
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* ============================================
+   BADGES / PILLS
+   ============================================ */
+.badge-aqua {
+  display: inline-block;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.65rem;
+  font-weight: 500;
+  border-radius: var(--radius-btn);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+.badge-aqua-light {
+  display: inline-block;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid rgba(94, 106, 210, 0.3);
+  padding: 0.3rem 0.7rem;
+  font-weight: 500;
+  border-radius: var(--radius-btn);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.badge-featured {
+  display: inline-block;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid rgba(94, 106, 210, 0.35);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar-custom {
+  transition: all 0.3s var(--ease-snap);
+  background: rgba(8, 9, 10, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.navbar-custom.scrolled {
+  background: rgba(8, 9, 10, 0.88);
+  border-bottom-color: var(--border-strong);
+}
+
+.nav-link-hover {
+  position: relative;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text-muted) !important;
+  transition: color 0.2s var(--ease-snap);
+}
+.nav-link-hover:hover,
+.nav-link-hover.active {
+  color: #fff !important;
+}
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.25s var(--ease-snap), left 0.25s var(--ease-snap);
+  transform: translateX(-50%);
+}
+.nav-link-hover:hover::after,
+.nav-link-hover.active::after {
+  width: 50%;
+}
+
+/* ============================================
+   BUTTONS — bootstrap overrides
+   ============================================ */
+.btn-accent {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: #fff !important;
+  border-radius: var(--radius-btn);
+  font-weight: 500;
+  font-size: 0.88rem;
+  padding: 0.55rem 1.1rem;
+  transition: background 0.2s var(--ease-snap), border-color 0.2s var(--ease-snap);
+}
+.btn-accent:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: #fff !important;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: #fff !important;
+  border-radius: var(--radius-btn);
+  font-weight: 500;
+  font-size: 0.88rem;
+  padding: 0.55rem 1.1rem;
+  transition: border-color 0.2s var(--ease-snap), background 0.2s var(--ease-snap);
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+  color: #fff !important;
+}
+
+/* Override Bootstrap primary so existing <Button variant="primary"> picks up accent */
+.btn-primary {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+  border-radius: var(--radius-btn) !important;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+}
+
+.btn-outline-primary {
+  color: var(--accent) !important;
+  border-color: rgba(94, 106, 210, 0.5) !important;
+  border-radius: var(--radius-btn) !important;
+}
+.btn-outline-primary:hover {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+
+.btn-outline-light {
+  color: #fff !important;
+  border-color: var(--border-strong) !important;
+  border-radius: var(--radius-btn) !important;
+}
+.btn-outline-light:hover {
+  background: var(--surface-2) !important;
+  border-color: var(--border-strong) !important;
+  color: #fff !important;
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+.section-divider {
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  border-radius: 1px;
+  margin: 1rem auto;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #fff;
+  line-height: 1.15;
+}
+
+/* ============================================
+   FORM
+   ============================================ */
+.form-control,
+.form-select {
+  background-color: var(--surface-2) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: var(--radius-btn) !important;
+  transition: border-color 0.2s var(--ease-snap);
+}
+.form-control:focus,
+.form-select:focus {
+  background-color: var(--surface-2) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(94, 106, 210, 0.15) !important;
+  color: var(--text) !important;
+}
+.form-control::placeholder {
+  color: var(--text-dim) !important;
+}
+
+.form-floating > label {
+  color: var(--text-muted) !important;
+  font-size: 0.9rem;
+}
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+  color: var(--accent) !important;
+  font-weight: 500;
+}
+
+/* ============================================
+   PROFILE IMAGE
+   ============================================ */
+.profile-img-glow {
+  position: relative;
+}
+.profile-img-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), transparent 70%);
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .display-3 { font-size: 2.2rem !important; }
+  .display-4 { font-size: 1.9rem !important; }
+  .display-6 { font-size: 1.5rem !important; }
+  .section-title { font-size: 1.6rem !important; }
+}
+
+/* Bootstrap overrides for dark surfaces */
+.bg-light { background-color: var(--surface) !important; }
+.text-slate-800,
+.text-slate-700,
+.text-slate-600,
+.text-slate-500 { color: var(--text-muted) !important; }
+.text-dark { color: #fff !important; }
+.border-slate-200 { border-color: var(--border) !important; }
+.bg-white { background-color: var(--surface) !important; }
