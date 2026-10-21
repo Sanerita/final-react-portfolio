@@ -7,11 +7,6 @@ import backgroundHome from '../assets/backgroundHome.jpg';
 const HomePage = () => {
   const stack = ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Microsoft 365', 'ServiceNow'];
 
-  // const metrics = [
-  //   { value: '5+', label: 'Years experience' },
-  //   { value: '50+', label: 'Clients supported' },
-  //   { value: '4', label: 'Production apps' },
-  // ];
 
   return (
     <section
@@ -142,30 +137,6 @@ const HomePage = () => {
                 </span>
               ))}
             </div>
-
-            {/* metrics */}
-            {/* <Row className="g-4 pt-4" style={{ borderTop: `1px solid ${theme.colors.border}` }}>
-              {metrics.map((m, i) => (
-                <Col xs={6} md={3} key={i}>
-                  <div
-                    style={{
-                      fontSize: '1.75rem',
-                      fontWeight: 500,
-                      color: '#fff',
-                      letterSpacing: '-0.02em',
-                    }}
-                  >
-                    {m.value}
-                  </div>
-                  <div
-                    className="font-mono"
-                    style={{ fontSize: '0.72rem', color: theme.colors.textMuted, letterSpacing: '0.05em' }}
-                  >
-                    {m.label}
-                  </div>
-                </Col>
-              ))}
-            </Row> */}
           </Col>
         </Row>
       </Container>
